@@ -1,18 +1,18 @@
 # Como usar as regras e os pacotes do SCOA
 
-Este guia explica a execução por quatro integrantes e suas equipes de agentes. Prazo final: 30/11/2026. As regras obrigatórias de desenvolvimento estão no `AGENTS.md` da raiz. A organização e os contratos propostos estão em `entrega_modular/GOVERNANCA.md`.
+Este guia explica a execução por quatro integrantes e suas equipes de agentes. Prazo final: 30/11/2026. As regras obrigatórias de desenvolvimento estão no `AGENTS.md` da raiz. A organização e os contratos propostos estão em `documentos/entrega_modular/GOVERNANCA.md`.
 
 ## 1. O que cada arquivo faz
 
 | Arquivo | Uso |
 |---|---|
 | `AGENTS.md` | Padrão de código, nomes, arquitetura, permissões, dados, testes e revisão para todos os agentes. |
-| `entrega_modular/GOVERNANCA.md` | Responsáveis técnicos, interfaces entre módulos, marcos e coordenação assíncrona. |
-| `entrega_modular/01_ACADEMICO.md` | Incrementos do responsável A. |
-| `entrega_modular/02_FINANCEIRO.md` | Incrementos de B, incluindo contratos compartilhados. |
-| `entrega_modular/03_BIBLIOTECA.md` | Incrementos de C; também consolida evidências e roteiro final. |
-| `entrega_modular/04_ALMOXARIFADO_ADMINISTRATIVO.md` | Incrementos de D, mantendo os dois módulos separados; inclui fundação. |
-| `BACKLOG_ENTREGA.md` | Referência de QA/REL e rastreabilidade anterior; sua pauta de reuniões foi substituída pela execução assíncrona. |
+| `documentos/entrega_modular/GOVERNANCA.md` | Responsáveis técnicos, interfaces entre módulos, marcos e coordenação assíncrona. |
+| `documentos/entrega_modular/01_ACADEMICO.md` | Incrementos do responsável A. |
+| `documentos/entrega_modular/02_FINANCEIRO.md` | Incrementos de B, incluindo contratos compartilhados. |
+| `documentos/entrega_modular/03_BIBLIOTECA.md` | Incrementos de C; também consolida evidências e roteiro final. |
+| `documentos/entrega_modular/04_ALMOXARIFADO_ADMINISTRATIVO.md` | Incrementos de D, mantendo os dois módulos separados; inclui fundação. |
+| `documentos/PLANO_TESTES_ENTREGA.md` | Fonte vigente dos cartões QA/REL, evidências e critérios de liberação. |
 | PDF do projeto | Fonte dos requisitos e regras do produto. Os pacotes não substituem sua leitura nas seções relacionadas. |
 
 Os IDs de cartões e os IDs de requisitos não são equivalentes: o cartão ACA-04 implementa os RF acadêmicos 18 e 19. Sempre conferir o campo “Referência” do incremento antes de buscar o requisito.
@@ -20,7 +20,7 @@ Os IDs de cartões e os IDs de requisitos não são equivalentes: o cartão ACA-
 ## 2. Preparação única da equipe
 
 1. Preencher A/B/C/D com os nomes no quadro e nos pacotes, sem mudar a propriedade por iniciativa de um agente.
-2. Manter uma cópia comum versionada destes arquivos na raiz do repositório real. Se o repositório já tiver AGENTS.md, incorporar as regras após revisão de D, preservando instruções existentes pertinentes.
+2. Manter AGENTS.md na raiz e os demais documentos em documentos/, conforme o README do repositório. Se o repositório já tiver AGENTS.md, incorporar as regras após revisão de D, preservando instruções existentes pertinentes.
 3. D registra linguagem, framework, versões, estrutura real de diretórios, comandos de instalação/build/teste/lint e configuração do banco em uma decisão técnica. Registra também os caminhos pertencentes a cada módulo.
 4. B publica contratos versionados com provedores e consumidores. Definir assinaturas e exemplos na mesma stack; não basta distribuir descrições em linguagem natural.
 5. Todos partem do mesmo commit-base e ambiente. Os arquivos de regras podem ser copiados para outras ferramentas de IA, mantendo uma única fonte de verdade no repositório.
@@ -35,7 +35,7 @@ Prompt pronto para adaptar:
 
 ```text
 Você trabalhará no SCOA como agente do integrante [nome / A-B-C-D].
-Leia AGENTS.md, entrega_modular/GOVERNANCA.md e [caminho do pacote].
+Leia AGENTS.md, documentos/entrega_modular/GOVERNANCA.md e [caminho do pacote].
 Leia a decisão de stack e os contratos existentes.
 Incremento desta sessão: [ID e título].
 Diretórios autorizados: [caminhos reais do meu módulo e testes].

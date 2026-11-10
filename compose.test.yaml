@@ -1,0 +1,20 @@
+name: scoa-testes
+services:
+  mysql-testes:
+    image: mysql:8.4
+    # Instância descartável: permite a fixture de falha por trigger sem privilégio SUPER.
+    command: ["--skip-log-bin"]
+    environment:
+      MYSQL_DATABASE: scoa_test
+      MYSQL_USER: scoa_test
+      MYSQL_PASSWORD: ${SCOA_TEST_PASSWORD:?Defina a senha de teste}
+      MYSQL_ROOT_PASSWORD: ${SCOA_TEST_ROOT_PASSWORD:?Defina a senha root de teste}
+      TZ: UTC
+    ports: ["127.0.0.1:3308:3306"]
+    tmpfs: [/var/lib/mysql]
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$$MYSQL_PASSWORD\" mysql --protocol=TCP -h 127.0.0.1 -u\"$$MYSQL_USER\" \"$$MYSQL_DATABASE\" -e 'SELECT 1' >/dev/null 2>&1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s

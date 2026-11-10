@@ -1,6 +1,6 @@
 # SCOA — regras comuns para agentes de implementação
 
-Versão 1.0 — 06/11/2026. Aplicável a todos os módulos e agentes que trabalham neste repositório. Leia também `entrega_modular/GOVERNANCA.md`, o pacote atribuído e os requisitos correspondentes. Estas são convenções do projeto; a stack ainda precisa ser registrada por D. Não escolher frameworks individualmente.
+Versão 1.0 — 06/11/2026. Aplicável a todos os módulos e agentes que trabalham neste repositório. Leia também `documentos/entrega_modular/GOVERNANCA.md`, o pacote atribuído e os requisitos correspondentes. Estas são convenções do projeto; a stack ainda precisa ser registrada por D. Não escolher frameworks individualmente.
 
 ## 1. Antes de editar
 

@@ -6,7 +6,7 @@ Acervo, circulação e multas. Conduzir também a montagem do roteiro de demonst
 
 6 incrementos; 26 SP de referência. Pontos incluem interface, aplicação, persistência e testes locais. Não equivalem a horas nem asseguram cabimento no prazo. Todos os RF listados permanecem no escopo; P0/P1/P2 do arquivo anterior passam a indicar apenas ordem de construção.
 
-Leia primeiro GOVERNANCA.md. As dependências identificam interfaces/dados necessários; usar implementações simuladas locais até o provedor estar disponível e depois executar obrigatoriamente os testes reais.
+Leia primeiro AGENTS.md na raiz e documentos/entrega_modular/GOVERNANCA.md. Consulte documentos/PLANO_TESTES_ENTREGA.md para QA/REL. As dependências identificam interfaces/dados necessários; usar implementações simuladas locais até o provedor estar disponível e depois executar obrigatoriamente os testes reais.
 
 ## [BIB-01][3 SP] Acervo, exemplares e pesquisa
 
