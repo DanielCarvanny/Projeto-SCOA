@@ -8,6 +8,13 @@ public final class ConsultarAluno {
         this.acesso = acesso; this.repositorio = repositorio;
     }
     public Aluno executar(long usuarioId, long alunoId) {
-        throw new UnsupportedOperationException("RED: consulta não implementada");
+        if (usuarioId <= 0 || alunoId <= 0) {
+            throw new CadastroAlunoException(ErroCadastroAluno.ENTRADA_INVALIDA);
+        }
+        if (!acesso.podeConsultarAluno(usuarioId, alunoId)) {
+            throw new CadastroAlunoException(ErroCadastroAluno.NAO_AUTORIZADO);
+        }
+        return repositorio.consultar(alunoId).orElseThrow(
+                () -> new CadastroAlunoException(ErroCadastroAluno.ALUNO_NAO_ENCONTRADO));
     }
 }

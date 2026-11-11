@@ -1,0 +1,7 @@
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s -- in br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+[ERROR] Tests run: 12, Failures: 3, Errors: 7, Skipped: 0, Time elapsed: 1.032 s <<< FAILURE! -- in br.edu.scoa.academico.infraestrutura.persistencia.RepositorioAlunosMysqlIT
+[ERROR] Tests run: 12, Failures: 3, Errors: 7, Skipped: 0
+[INFO] BUILD FAILURE
+[INFO] Total time:  3.809 s
+[INFO] Finished at: 2026-11-10T09:46:15-03:00

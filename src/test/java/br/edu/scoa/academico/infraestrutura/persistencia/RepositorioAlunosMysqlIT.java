@@ -120,6 +120,29 @@ class RepositorioAlunosMysqlIT {
         var invalida = new ConfiguracaoBanco(banco.url(), "scoa_test", "senha-incorreta");
         assertThrows(SQLException.class, invalida::abrir);
     }
+    @Test void fluxoDosCasosDeUsoPersisteERecusaAcessoIndevido() throws Exception {
+        // Dublês de contratos institucionais: a persistência abaixo é MySQL real.
+        var identidade = new br.edu.scoa.academico.aplicacao.alunos.IdentidadeInstitucional() {
+            public boolean podeCadastrarAluno(long usuarioId) { return usuarioId == 7; }
+            public boolean pessoaExiste(long pessoaId) { return pessoaId == 42; }
+        };
+        var acesso = new br.edu.scoa.academico.aplicacao.alunos.AcessoAlunos() {
+            public boolean podeConsultarAluno(long usuarioId, long alunoId) { return usuarioId == 7; }
+            public boolean podeAtualizarAluno(long usuarioId, long alunoId) { return usuarioId == 7; }
+        };
+        var cadastrar = new br.edu.scoa.academico.aplicacao.alunos.CadastrarAluno(identidade, repositorio);
+        var consultar = new br.edu.scoa.academico.aplicacao.alunos.ConsultarAluno(acesso, repositorio);
+        var atualizar = new br.edu.scoa.academico.aplicacao.alunos.AtualizarAluno(acesso, repositorio);
+        var aluno = cadastrar.executar(7, 42, SituacaoCadastral.ATIVO);
+        assertEquals(aluno, consultar.executar(7, aluno.id()));
+        var negado = assertThrows(CadastroAlunoException.class,
+                () -> atualizar.executar(99, aluno.id(), SituacaoCadastral.INATIVO));
+        assertEquals("NAO_AUTORIZADO", negado.codigo().name());
+        assertEquals(1, contar("SELECT COUNT(*) FROM aluno_auditoria"));
+        atualizar.executar(7, aluno.id(), SituacaoCadastral.INATIVO);
+        assertEquals(SituacaoCadastral.INATIVO, consultar.executar(7, aluno.id()).situacaoCadastral());
+        assertEquals(2, contar("SELECT COUNT(*) FROM aluno_auditoria"));
+    }
     private void bloquearAuditoria() throws Exception {
         try (var c = banco.abrir(); var s = c.createStatement()) {
             s.execute("CREATE TRIGGER teste_falha_auditoria BEFORE INSERT ON aluno_auditoria FOR EACH ROW SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Falha de teste'");

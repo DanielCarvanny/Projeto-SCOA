@@ -10,6 +10,12 @@ public final class AtualizarAluno {
         this.acesso = acesso; this.repositorio = repositorio;
     }
     public Aluno executar(long usuarioId, long alunoId, SituacaoCadastral situacao) {
-        throw new UnsupportedOperationException("RED: atualização não implementada");
+        if (usuarioId <= 0 || alunoId <= 0 || situacao == null) {
+            throw new CadastroAlunoException(ErroCadastroAluno.ENTRADA_INVALIDA);
+        }
+        if (!acesso.podeAtualizarAluno(usuarioId, alunoId)) {
+            throw new CadastroAlunoException(ErroCadastroAluno.NAO_AUTORIZADO);
+        }
+        return repositorio.atualizarSituacao(alunoId, situacao, usuarioId);
     }
 }
