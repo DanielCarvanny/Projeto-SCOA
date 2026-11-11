@@ -1,0 +1,93 @@
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------------< br.edu.scoa:scoa >--------------------------
+[INFO] Building scoa 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ scoa ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO]
+[INFO] --- compiler:3.14.1:compile (default-compile) @ scoa ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ scoa ---
+[INFO] Copying 2 resources from src\test\resources to target\test-classes
+[INFO]
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ scoa ---
+[INFO] Recompiling the module because of added or removed source files.
+[INFO] Compiling 14 source files with javac [debug release 21] to target\test-classes
+[INFO]
+[INFO] --- surefire:3.5.4:test (default-test) @ scoa ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.137 s -- in br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Running br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s -- in br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.CadastroAlunoPorCpfTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in br.edu.scoa.academico.apresentacao.alunos.CadastroAlunoPorCpfTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.ControladorAlunosTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in br.edu.scoa.academico.apresentacao.alunos.ControladorAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.DadosDemonstracaoAlunosTest
+[ERROR] Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.016 s <<< FAILURE! -- in br.edu.scoa.academico.apresentacao.alunos.DadosDemonstracaoAlunosTest
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.DadosDemonstracaoAlunosTest.permiteAlterarENovoCadastroSemCompartilharEstadoEntreExecucoes -- Time elapsed: 0.011 s <<< ERROR!
+br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException: ALUNO_NAO_ENCONTRADO
+	at br.edu.scoa.academico.apresentacao.alunos.CenarioAlunos.lambda$atualizarSituacao$2(CenarioAlunos.java:34)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at br.edu.scoa.academico.apresentacao.alunos.CenarioAlunos.atualizarSituacao(CenarioAlunos.java:34)
+	at br.edu.scoa.academico.aplicacao.alunos.AtualizarAluno.executar(AtualizarAluno.java:19)
+	at br.edu.scoa.academico.apresentacao.alunos.ControladorAlunos.atualizar(ControladorAlunos.java:28)
+	at br.edu.scoa.academico.apresentacao.alunos.DadosDemonstracaoAlunosTest.permiteAlterarENovoCadastroSemCompartilharEstadoEntreExecucoes(DadosDemonstracaoAlunosTest.java:19)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.DadosDemonstracaoAlunosTest.iniciaComDoisAlunosConsultaveisERecusaDuplicidade -- Time elapsed: 0.001 s <<< ERROR!
+br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException: ALUNO_NAO_ENCONTRADO
+	at br.edu.scoa.academico.aplicacao.alunos.ConsultarAluno.lambda$0(ConsultarAluno.java:18)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at br.edu.scoa.academico.aplicacao.alunos.ConsultarAluno.executar(ConsultarAluno.java:17)
+	at br.edu.scoa.academico.apresentacao.alunos.ControladorAlunos.consultar(ControladorAlunos.java:25)
+	at br.edu.scoa.academico.apresentacao.alunos.DadosDemonstracaoAlunosTest.iniciaComDoisAlunosConsultaveisERecusaDuplicidade(DadosDemonstracaoAlunosTest.java:11)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.FluxoAlunosTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.143 s -- in br.edu.scoa.academico.apresentacao.alunos.FluxoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.PainelAlunosTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.734 s -- in br.edu.scoa.academico.apresentacao.alunos.PainelAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.PainelCadastroCpfTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.922 s -- in br.edu.scoa.academico.apresentacao.alunos.PainelCadastroCpfTest
+[INFO] Running br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[INFO]
+[INFO] Results:
+[INFO]
+[ERROR] Errors:
+[ERROR]   DadosDemonstracaoAlunosTest.iniciaComDoisAlunosConsultaveisERecusaDuplicidade:11 � CadastroAluno ALUNO_NAO_ENCONTRADO
+[ERROR]   DadosDemonstracaoAlunosTest.permiteAlterarENovoCadastroSemCompartilharEstadoEntreExecucoes:19 � CadastroAluno ALUNO_NAO_ENCONTRADO
+[INFO]
+[ERROR] Tests run: 78, Failures: 0, Errors: 2, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.634 s
+[INFO] Finished at: 2026-11-10T22:31:36-03:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.4:test (default-test) on project scoa:
+[ERROR]
+[ERROR] See C:\Users\Dan\SCOA\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
