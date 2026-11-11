@@ -37,3 +37,7 @@ Sem essas decisões, podem ser aprovados testes unitários e persistência com f
 ## Extensão consumidora por CPF
 
 Proposta local PessoasPorCpf: consultar(usuarioId, cpf) e cadastrarOuObter(usuarioId, cpf, nome, email, telefone). Retorna PessoaParaCadastro com pessoaId, cpf e dados de conferência. Aprovação B/D pendente. Contrato, recuperação de falha parcial e roteiro em [cadastro por CPF](GUIA_CADASTRO_CPF.md).
+
+## Ficha e edição pessoal — 11/11/2026
+
+DadosPessoaisInstitucionais propõe consultarPorId(usuarioId, pessoaId) e atualizar(usuarioId, esperada, nome, email, telefone). Provedor deve autorizar, auditar e comparar/escrever atomicamente; CPF e pessoaId não mudam. Aprovação B/D permanece pendente por decisão de Dan. Consulte ENTREGA_FICHA_PESSOA_ALUNO.md e MENSAGEM_FUNDACAO_PESSOA_ALUNO.md.

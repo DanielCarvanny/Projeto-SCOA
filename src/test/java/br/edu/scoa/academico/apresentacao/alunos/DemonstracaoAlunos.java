@@ -10,7 +10,7 @@ public final class DemonstracaoAlunos {
             JFrame janela = new JFrame("SCOA — Acadêmico");
             janela.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             janela.setContentPane(new FluxoAlunos(cenario.cadastro(), cenario.gestao(), new DialogosJOptionPane(),
-                    "DEMONSTRAÇÃO EM MEMÓRIA · alunos 1 e 2 pré-cadastrados · dados não persistidos"));
+                    "DEMONSTRAÇÃO EM MEMÓRIA · alunos 1 e 2 pré-cadastrados · dados não persistidos", cenario.ficha()));
             janela.pack(); janela.setMinimumSize(janela.getSize()); janela.setLocationRelativeTo(null); janela.setVisible(true);
         });
     }

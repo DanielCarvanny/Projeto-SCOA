@@ -4,7 +4,7 @@ import br.edu.scoa.academico.aplicacao.alunos.*;
 import java.util.*;
 
 /** Fundação fictícia somente para testes e demonstração em memória. */
-final class CenarioCpf implements IdentidadeInstitucional, PessoasPorCpf {
+final class CenarioCpf implements IdentidadeInstitucional, PessoasPorCpf, DadosPessoaisInstitucionais {
     final CenarioAlunos alunos = new CenarioAlunos();
     final Map<String, PessoaParaCadastro> pessoas = new HashMap<>();
     long proximoId = 44;
@@ -25,6 +25,18 @@ final class CenarioCpf implements IdentidadeInstitucional, PessoasPorCpf {
         if (!podeCadastrarAluno(usuario)) throw new CadastroAlunoException(ErroCadastroAluno.NAO_AUTORIZADO);
     }
     CadastroAlunoPorCpf cadastro() { return new CadastroAlunoPorCpf(7, this, this, new CadastrarAluno(this, alunos)); }
+    public synchronized Optional<PessoaParaCadastro> consultarPorId(long usuario, long id) {
+        autorizar(usuario);
+        return pessoas.values().stream().filter(p -> p.pessoaId() == id).findFirst();
+    }
+    public synchronized PessoaParaCadastro atualizar(long usuario, PessoaParaCadastro esperada, String nome, String email, String telefone) {
+        autorizar(usuario);
+        var atual = consultarPorId(usuario, esperada.pessoaId()).orElseThrow(() -> new CadastroAlunoException(ErroCadastroAluno.PESSOA_NAO_ENCONTRADA));
+        if (!atual.equals(esperada)) throw new FalhaDadosPessoais(FalhaDadosPessoais.Codigo.CONFLITO_EDICAO);
+        var nova = new PessoaParaCadastro(atual.pessoaId(), atual.cpf(), nome, email, telefone);
+        pessoas.put(atual.cpf(), nova); return nova;
+    }
+    GestaoFichaAluno ficha() { return new GestaoFichaAluno(7, new ConsultarAluno(alunos, alunos), alunos, this); }
     ControladorAlunos gestao() {
         return new ControladorAlunos(7, new CadastrarAluno(this, alunos), new ConsultarAluno(alunos, alunos), new AtualizarAluno(alunos, alunos));
     }

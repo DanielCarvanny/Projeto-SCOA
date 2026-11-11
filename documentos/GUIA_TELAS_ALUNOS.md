@@ -1,3 +1,5 @@
+> Atualização de 11/11/2026: a demonstração agora exibe nome/CPF/contato e permite editar dados pessoais. Consulte [ficha e edição](ENTREGA_FICHA_PESSOA_ALUNO.md). A integração real com a Fundação permanece pendente.
+
 # ACA-01 — Telas guiadas de Alunos
 
 Responsável: Dan/A. Branch: codex/aca-01-telas-guiadas. Data: 10/11/2026.

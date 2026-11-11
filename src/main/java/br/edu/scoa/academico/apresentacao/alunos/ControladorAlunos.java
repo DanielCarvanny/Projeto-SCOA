@@ -28,6 +28,12 @@ public final class ControladorAlunos {
         return atualizar.executar(usuarioId, identificador(alunoId), situacao);
     }
     public static String mensagemErro(Throwable erro) {
+        if (erro instanceof FalhaDadosPessoais falha) {
+            return switch (falha.codigo()) {
+                case CONFLITO_EDICAO -> "Os dados foram alterados por outra operação. Volte à busca e consulte novamente antes de editar.";
+                case RESPOSTA_INCONSISTENTE -> "Não foi possível confirmar a identidade institucional. Consulte o responsável.";
+            };
+        }
         if (erro instanceof CadastroAlunoException falha) {
             return switch (falha.codigo()) {
                 case ENTRADA_INVALIDA -> "Informe identificadores positivos e uma situação cadastral.";

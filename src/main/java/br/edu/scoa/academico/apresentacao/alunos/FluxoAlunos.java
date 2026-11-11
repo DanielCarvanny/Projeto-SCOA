@@ -23,8 +23,16 @@ public final class FluxoAlunos extends JPanel {
     private boolean pessoaNova;
     private Aluno selecionado;
     private boolean ocupado;
+    private final GestaoFichaAluno fichas;
+    private FichaAluno fichaSelecionada;
+    private final JTextField editarNome = new JTextField(24), editarEmail = new JTextField(24), editarTelefone = new JTextField(24);
+    private final JLabel pessoaEmEdicao = new JLabel();
 
     public FluxoAlunos(CadastroAlunoPorCpf cadastro, ControladorAlunos gestao, DialogosAluno dialogos, String contexto) {
+        this(cadastro, gestao, dialogos, contexto, null);
+    }
+    public FluxoAlunos(CadastroAlunoPorCpf cadastro, ControladorAlunos gestao, DialogosAluno dialogos, String contexto, GestaoFichaAluno fichas) {
+        this.fichas = fichas;
         this.cadastro = cadastro; this.gestao = gestao; this.dialogos = dialogos;
         setLayout(new BorderLayout(16, 16)); setBorder(BorderFactory.createEmptyBorder(20, 24, 20, 24));
         add(new JLabel(contexto), BorderLayout.NORTH); add(paginas, BorderLayout.CENTER);
@@ -82,11 +90,18 @@ public final class FluxoAlunos extends JPanel {
         JPanel consulta = pagina("consulta", "Consultar aluno", "Informe o ID recebido ao concluir o cadastro.");
         campo(consulta, "ID do aluno", alunoId, "alunoId");
         botao(consulta, "buscarAluno", "Buscar aluno", () -> {
-            selecionado = null; detalhes.setText(""); String id = alunoId.getText();
-            executar(() -> gestao.consultar(id), this::exibirDetalhes);
+            selecionado = null; fichaSelecionada = null; detalhes.setText(""); String id = alunoId.getText();
+            if (fichas == null) executar(() -> gestao.consultar(id), this::exibirDetalhes);
+            else executar(() -> fichas.consultar(id), this::exibirFicha);
         });
         botao(consulta, "consultaMenu", "Voltar ao menu", this::menu);
         JPanel ficha = pagina("detalhes", "Detalhes do aluno", "Confira o aluno localizado antes de solicitar uma alteração."); ficha.add(detalhes);
+        if (fichas != null) botao(ficha, "editarPessoa", "Editar dados pessoais", () -> {
+            if (fichaSelecionada == null) return;
+            var pessoa = fichaSelecionada.pessoa();
+            pessoaEmEdicao.setText("Aluno " + fichaSelecionada.aluno().id() + " · CPF: " + pessoa.cpf() + " (não editável)");
+            editarNome.setText(pessoa.nome()); editarEmail.setText(pessoa.email()); editarTelefone.setText(pessoa.telefone()); mostrar("edicaoPessoa");
+        });
         botao(ficha, "editarSituacao", "Alterar situação", () -> {
             if (selecionado == null) return;
             alteracao.setText("Aluno: " + selecionado.id() + "\nSituação atual: " + selecionado.situacaoCadastral());
@@ -104,6 +119,19 @@ public final class FluxoAlunos extends JPanel {
                 executar(() -> gestao.atualizar(Long.toString(id), valor), this::exibirDetalhes);
         });
         botao(editar, "cancelarAlteracao", "Voltar sem alterar", () -> mostrar("detalhes"));
+        JPanel dadosPessoais = pagina("edicaoPessoa", "Editar dados pessoais", "Nome e contato são mantidos pela identidade institucional.");
+        dadosPessoais.add(pessoaEmEdicao);
+        campo(dadosPessoais, "Nome completo *", editarNome, "editarNome");
+        campo(dadosPessoais, "E-mail *", editarEmail, "editarEmail");
+        campo(dadosPessoais, "Telefone (opcional)", editarTelefone, "editarTelefone");
+        botao(dadosPessoais, "salvarPessoa", "Salvar dados pessoais", () -> {
+            if (fichas == null || fichaSelecionada == null) return;
+            var esperada = fichaSelecionada;
+            String novoNome = editarNome.getText(), novoEmail = editarEmail.getText(), novoTelefone = editarTelefone.getText();
+            if (dialogos.confirmar(this, "Salvar nome e contato do aluno " + esperada.aluno().id() + "?"))
+                executar(() -> fichas.atualizar(esperada, novoNome, novoEmail, novoTelefone), this::exibirFicha);
+        });
+        botao(dadosPessoais, "cancelarPessoa", "Voltar sem salvar", () -> mostrar("detalhes"));
         mostrar("menu");
     }
     private JPanel pagina(String nome, String titulo, String orientacao) {
@@ -134,12 +162,18 @@ public final class FluxoAlunos extends JPanel {
     }
     private void limparDados() { cpfConsultado = null; nome.setText(""); email.setText(""); telefone.setText(""); revisao.setText(""); situacao.setSelectedIndex(0); }
     private void limparCadastro() { cpf.setText(""); limparDados(); }
-    private void menu() { limparCadastro(); selecionado = null; detalhes.setText(""); alteracao.setText(""); resultado.setText(""); mostrar("menu"); }
-    private void novaBusca() { selecionado = null; detalhes.setText(""); alteracao.setText(""); alunoId.setText(""); mostrar("consulta"); }
+    private void menu() { limparCadastro(); fichaSelecionada = null; selecionado = null; detalhes.setText(""); alteracao.setText(""); resultado.setText(""); mostrar("menu"); }
+    private void novaBusca() { fichaSelecionada = null; selecionado = null; detalhes.setText(""); alteracao.setText(""); alunoId.setText(""); mostrar("consulta"); }
+    private void exibirFicha(FichaAluno ficha) { fichaSelecionada = ficha; exibirDetalhes(ficha.aluno()); }
     private void exibirDetalhes(Aluno aluno) {
         selecionado = aluno;
-        detalhes.setText("ID do aluno: " + aluno.id() + "\nSituação cadastral: " + aluno.situacaoCadastral()
-                + "\n\nNome e contato ainda não estão disponíveis nesta consulta."); mostrar("detalhes");
+        String pessoais = "\n\nNome e contato ainda não estão disponíveis nesta consulta.";
+        if (fichaSelecionada != null && fichaSelecionada.aluno().id() == aluno.id()) {
+            fichaSelecionada = new FichaAluno(aluno, fichaSelecionada.pessoa());
+            var pessoa = fichaSelecionada.pessoa();
+            pessoais = "\nNome: " + pessoa.nome() + "\nCPF: " + pessoa.cpf() + "\nE-mail: " + pessoa.email() + "\nTelefone: " + (pessoa.telefone() == null ? "" : pessoa.telefone());
+        }
+        detalhes.setText("ID do aluno: " + aluno.id() + "\nSituação cadastral: " + aluno.situacaoCadastral() + pessoais); mostrar("detalhes");
     }
     private void habilitar(Container pai, boolean valor) {
         for (Component filho : pai.getComponents()) { filho.setEnabled(valor); if (filho instanceof Container grupo) habilitar(grupo, valor); }
