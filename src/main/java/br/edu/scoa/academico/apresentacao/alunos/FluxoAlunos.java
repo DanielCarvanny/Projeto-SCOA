@@ -19,8 +19,10 @@ public final class FluxoAlunos extends JPanel {
     private final CadastroAlunoPorCpf cadastro;
     private final ControladorAlunos gestao;
     private final DialogosAluno dialogos;
+    private final JTextField cpfBusca = new JTextField(24);
+    private final JComboBox<String> tipoBusca = new JComboBox<>(new String[]{"ID interno", "CPF"});
+    private final JPanel entradaId = new JPanel(), entradaCpf = new JPanel();
     private String cpfConsultado;
-    private boolean pessoaNova;
     private Aluno selecionado;
     private boolean ocupado;
     private final GestaoFichaAluno fichas;
@@ -41,35 +43,33 @@ public final class FluxoAlunos extends JPanel {
         botao(menu, "menuCadastrar", "Cadastrar aluno", () -> { limparCadastro(); mostrar("identificar"); });
         botao(menu, "menuConsultar", "Consultar aluno", this::novaBusca);
 
-        JPanel identificar = pagina("identificar", "Cadastrar aluno · 1 de 3", "Informe o CPF para localizar a pessoa institucional.");
-        campo(identificar, "CPF", cpf, "cpf");
+        JPanel identificar = pagina("identificar", "Localizar pessoa cadastrada", "Informe o CPF para localizar a pessoa institucional.");
+        campo(identificar, "CPF — XXXXXXXXXXX ou XXX.XXX.XXX-XX", cpf, "cpf");
+        identificar.add(new JLabel("Exemplo: 52998224725 ou 529.982.247-25."));
         botao(identificar, "buscarCpf", "Buscar CPF e continuar", () -> {
             String documento = cpf.getText(); limparDados();
             executar(() -> cadastro.consultar(documento), pessoa -> {
-                cpfConsultado = documento; pessoaNova = pessoa.isEmpty();
+                if (pessoa.isEmpty()) { dialogos.erro(this,"Pessoa não cadastrada. Cadastre-a em Pessoas antes de criar este vínculo."); return; }
+                cpfConsultado = documento;
                 pessoa.ifPresent(p -> { nome.setText(p.nome()); email.setText(p.email()); telefone.setText(p.telefone()); });
-                nome.setEditable(pessoaNova); email.setEditable(pessoaNova); telefone.setEditable(pessoaNova);
-                orientacaoDados.setText(pessoaNova ? "Pessoa nova: preencha os campos obrigatórios (*)." : "Pessoa encontrada: confira os dados. Eles não serão alterados.");
+                nome.setEditable(false); email.setEditable(false); telefone.setEditable(false);
+                orientacaoDados.setText("Pessoa encontrada: confira os dados. Para editá-los, use Pessoas.");
                 mostrar("dados");
             });
         });
         botao(identificar, "voltarMenu", "Voltar ao menu", this::menu);
 
-        JPanel dados = pagina("dados", "Cadastrar aluno · 2 de 3", "Confira ou complete os dados antes de continuar.");
+        JPanel dados = pagina("dados", "Cadastrar aluno · 2 de 3", "Confira a pessoa e informe os dados do vínculo.");
         dados.add(orientacaoDados);
         campo(dados, "Nome completo *", nome, "nome"); campo(dados, "E-mail *", email, "email"); campo(dados, "Telefone (opcional)", telefone, "telefone");
         campo(dados, "Situação cadastral *", situacao, "situacao");
         botao(dados, "revisar", "Continuar para revisão", () -> {
-            if (pessoaNova && (nome.getText().isBlank() || nome.getText().trim().length() > 200
-                    || !email.getText().trim().matches("[^\\s@]+@[^\\s@]+\\.[^\\s@]+") || email.getText().trim().length() > 254 || telefone.getText().trim().length() > 30)) {
-                dialogos.erro(this, "Confira nome e e-mail obrigatórios e o tamanho dos campos."); return;
-            }
             revisao.setText("CPF: " + cpfConsultado + "\nNome: " + nome.getText() + "\nE-mail: " + email.getText()
                     + "\nTelefone: " + telefone.getText() + "\nSituação: " + situacao.getSelectedItem()
-                    + "\n\n" + (pessoaNova ? "Será criada uma pessoa e seu vínculo de aluno." : "Será criado o vínculo de aluno para a pessoa encontrada."));
+                    + "\n\n" + "Será criado apenas o vínculo de aluno para a pessoa encontrada.");
             mostrar("revisao");
         });
-        botao(dados, "voltarCpf", "Voltar ao CPF", () -> { limparDados(); mostrar("identificar"); });
+        botao(dados, "voltarCpf", "Voltar à identificação", () -> { limparDados(); mostrar("identificar"); });
         botao(dados, "cancelarCadastro", "Cancelar cadastro", this::menu);
 
         JPanel confirmar = pagina("revisao", "Cadastrar aluno · 3 de 3", "Revise os dados. Nada foi gravado até este momento.");
@@ -78,8 +78,8 @@ public final class FluxoAlunos extends JPanel {
             if (cpfConsultado == null) return;
             String documento = cpfConsultado, nomeInformado = nome.getText(), emailInformado = email.getText(), telefoneInformado = telefone.getText();
             SituacaoCadastral valor = (SituacaoCadastral)situacao.getSelectedItem();
-            executar(() -> cadastro.cadastrar(documento, nomeInformado, emailInformado, telefoneInformado, valor), aluno -> {
-                limparCadastro(); resultado.setText("Aluno cadastrado com sucesso.\n\nID do aluno: " + aluno.id() + "\nSituação: " + aluno.situacaoCadastral() + "\n\nAnote o ID para consultar o aluno."); mostrar("resultado");
+            executar(() -> cadastro.cadastrar(documento, nomeInformado, emailInformado, telefoneInformado, valor, false), aluno -> {
+                limparCadastro(); resultado.setText("Aluno cadastrado com sucesso.\n\nID do aluno: " + aluno.id() + "\nSituação: " + aluno.situacaoCadastral() + "\n\nConsulte o aluno pelo CPF ou pelo ID interno."); mostrar("resultado");
             });
         });
         botao(confirmar, "voltarDados", "Voltar e revisar dados", () -> mostrar("dados"));
@@ -87,11 +87,20 @@ public final class FluxoAlunos extends JPanel {
         JPanel sucesso = pagina("resultado", "Cadastro concluído", "O vínculo de aluno foi criado."); sucesso.add(resultado);
         botao(sucesso, "resultadoMenu", "Voltar ao menu", this::menu);
 
-        JPanel consulta = pagina("consulta", "Consultar aluno", "Informe o ID recebido ao concluir o cadastro.");
-        campo(consulta, "ID do aluno", alunoId, "alunoId");
+        JPanel consulta = pagina("consulta", "Consultar aluno", "Escolha a forma de busca e informe o dado correspondente.");
+        campo(consulta,"Buscar por",tipoBusca,"tipoBusca");
+        entradaId.setLayout(new BoxLayout(entradaId,BoxLayout.Y_AXIS));
+        entradaCpf.setLayout(new BoxLayout(entradaCpf,BoxLayout.Y_AXIS));
+        campo(entradaId,"ID interno do aluno",alunoId,"alunoId");
+        campo(entradaCpf,"CPF — XXXXXXXXXXX ou XXX.XXX.XXX-XX",cpfBusca,"cpfBusca");
+        entradaCpf.add(new JLabel("Exemplo: 52998224725 ou 529.982.247-25."));
+        consulta.add(entradaId); consulta.add(entradaCpf); entradaCpf.setVisible(false);
+        if (fichas == null) tipoBusca.removeItem("CPF");
+        tipoBusca.addActionListener(e -> { entradaId.setVisible(tipoBusca.getSelectedIndex()==0); entradaCpf.setVisible(tipoBusca.getSelectedIndex()==1); });
         botao(consulta, "buscarAluno", "Buscar aluno", () -> {
             selecionado = null; fichaSelecionada = null; detalhes.setText(""); String id = alunoId.getText();
-            if (fichas == null) executar(() -> gestao.consultar(id), this::exibirDetalhes);
+            if (tipoBusca.getSelectedIndex()==1) { String documento=cpfBusca.getText(); executar(() -> cadastro.consultarAluno(documento,fichas),this::exibirFicha); }
+            else if (fichas == null) executar(() -> gestao.consultar(id), this::exibirDetalhes);
             else executar(() -> fichas.consultar(id), this::exibirFicha);
         });
         botao(consulta, "consultaMenu", "Voltar ao menu", this::menu);
@@ -119,7 +128,7 @@ public final class FluxoAlunos extends JPanel {
                 executar(() -> gestao.atualizar(Long.toString(id), valor), this::exibirDetalhes);
         });
         botao(editar, "cancelarAlteracao", "Voltar sem alterar", () -> mostrar("detalhes"));
-        JPanel dadosPessoais = pagina("edicaoPessoa", "Editar dados pessoais", "Nome e contato são mantidos pela identidade institucional.");
+        JPanel dadosPessoais = pagina("edicaoPessoa", "Editar dados pessoais", "<html>Nome e contato são compartilhados entre os vínculos desta pessoa.<br>Alterações também aparecerão em seu cadastro de professor, se houver.</html>");
         dadosPessoais.add(pessoaEmEdicao);
         campo(dadosPessoais, "Nome completo *", editarNome, "editarNome");
         campo(dadosPessoais, "E-mail *", editarEmail, "editarEmail");
@@ -128,7 +137,7 @@ public final class FluxoAlunos extends JPanel {
             if (fichas == null || fichaSelecionada == null) return;
             var esperada = fichaSelecionada;
             String novoNome = editarNome.getText(), novoEmail = editarEmail.getText(), novoTelefone = editarTelefone.getText();
-            if (dialogos.confirmar(this, "Salvar nome e contato do aluno " + esperada.aluno().id() + "?"))
+            if (dialogos.confirmar(this, "Salvar dados pessoais compartilhados? A alteração aparecerá em todos os vínculos desta pessoa."))
                 executar(() -> fichas.atualizar(esperada, novoNome, novoEmail, novoTelefone), this::exibirFicha);
         });
         botao(dadosPessoais, "cancelarPessoa", "Voltar sem salvar", () -> mostrar("detalhes"));
@@ -163,7 +172,7 @@ public final class FluxoAlunos extends JPanel {
     private void limparDados() { cpfConsultado = null; nome.setText(""); email.setText(""); telefone.setText(""); revisao.setText(""); situacao.setSelectedIndex(0); }
     private void limparCadastro() { cpf.setText(""); limparDados(); }
     private void menu() { limparCadastro(); fichaSelecionada = null; selecionado = null; detalhes.setText(""); alteracao.setText(""); resultado.setText(""); mostrar("menu"); }
-    private void novaBusca() { fichaSelecionada = null; selecionado = null; detalhes.setText(""); alteracao.setText(""); alunoId.setText(""); mostrar("consulta"); }
+    private void novaBusca() { fichaSelecionada = null; selecionado = null; detalhes.setText(""); alteracao.setText(""); alunoId.setText(""); cpfBusca.setText(""); mostrar("consulta"); }
     private void exibirFicha(FichaAluno ficha) { fichaSelecionada = ficha; exibirDetalhes(ficha.aluno()); }
     private void exibirDetalhes(Aluno aluno) {
         selecionado = aluno;
@@ -171,9 +180,9 @@ public final class FluxoAlunos extends JPanel {
         if (fichaSelecionada != null && fichaSelecionada.aluno().id() == aluno.id()) {
             fichaSelecionada = new FichaAluno(aluno, fichaSelecionada.pessoa());
             var pessoa = fichaSelecionada.pessoa();
-            pessoais = "\nNome: " + pessoa.nome() + "\nCPF: " + pessoa.cpf() + "\nE-mail: " + pessoa.email() + "\nTelefone: " + (pessoa.telefone() == null ? "" : pessoa.telefone());
+            pessoais = "\n\nDADOS PESSOAIS COMPARTILHADOS\nNome: " + pessoa.nome() + "\nCPF: " + pessoa.cpf() + "\nE-mail: " + pessoa.email() + "\nTelefone: " + (pessoa.telefone() == null ? "" : pessoa.telefone());
         }
-        detalhes.setText("ID do aluno: " + aluno.id() + "\nSituação cadastral: " + aluno.situacaoCadastral() + pessoais); mostrar("detalhes");
+        detalhes.setText("DADOS DO ALUNO\nID do aluno: " + aluno.id() + "\nSituação cadastral: " + aluno.situacaoCadastral() + pessoais); mostrar("detalhes");
     }
     private void habilitar(Container pai, boolean valor) {
         for (Component filho : pai.getComponents()) { filho.setEnabled(valor); if (filho instanceof Container grupo) habilitar(grupo, valor); }
@@ -191,9 +200,7 @@ public final class FluxoAlunos extends JPanel {
         }.execute();
     }
     private void erro(Throwable falha) {
-        String mensagem = falha instanceof CadastroAlunoException e && e.codigo() == ErroCadastroAluno.ENTRADA_INVALIDA
-                ? "Confira os dados informados. CPF deve ter 11 dígitos válidos; nome e e-mail são obrigatórios para pessoa nova."
-                : ControladorAlunos.mensagemErro(falha);
+        String mensagem = ControladorAlunos.mensagemErro(falha);
         dialogos.erro(this, mensagem);
     }
 }

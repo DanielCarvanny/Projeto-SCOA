@@ -45,6 +45,16 @@ public final class RepositorioAlunosMysql implements RepositorioGestaoAlunos {
             return consultar(c, alunoId, false);
         } catch (SQLException erro) { throw new PersistenciaAcademicaException(erro); }
     }
+    public Optional<Aluno> consultarPorPessoa(long pessoaId) {
+        if (pessoaId <= 0) throw new CadastroAlunoException(ErroCadastroAluno.ENTRADA_INVALIDA);
+        try (var c = banco.abrir(); var s = c.prepareStatement("SELECT id,pessoa_id,situacao_cadastral FROM aluno WHERE pessoa_id=?")) {
+            s.setLong(1, pessoaId);
+            try (var r = s.executeQuery()) {
+                if (!r.next()) return Optional.empty();
+                return Optional.of(new Aluno(r.getLong("id"), r.getLong("pessoa_id"), SituacaoCadastral.valueOf(r.getString("situacao_cadastral"))));
+            }
+        } catch (SQLException erro) { throw new PersistenciaAcademicaException(erro); }
+    }
     public Aluno atualizarSituacao(long alunoId, SituacaoCadastral situacao, long usuarioId) {
         validar(alunoId, situacao, usuarioId);
         try (var c = banco.abrir()) {

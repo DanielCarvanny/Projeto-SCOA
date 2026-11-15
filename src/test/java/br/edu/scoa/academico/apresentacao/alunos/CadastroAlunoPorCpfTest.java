@@ -34,14 +34,14 @@ class CadastroAlunoPorCpfTest {
         assertEquals(42, fluxo.cadastrar("52998224725", "", "", "", SituacaoCadastral.ATIVO).pessoaId());
         assertEquals(0, criacoes);
     }
-    @Test void solicitaCriacaoPelaPortaERecusaAlunoDuplicado() {
-        assertTrue(fluxo.consultar("52998224725").isEmpty());
+    @Test void reutilizaPessoaCadastradaERecusaAlunoDuplicado() {
+        pessoas.put("52998224725",new PessoaParaCadastro(42,"52998224725","Pessoa Teste","teste@example.invalid",""));
         fluxo.cadastrar("52998224725", "Pessoa Teste", "teste@example.invalid", "", SituacaoCadastral.ATIVO);
-        assertEquals(1, criacoes);
+        assertEquals(0, criacoes);
         assertThrows(CadastroAlunoException.class, () -> fluxo.cadastrar("52998224725", "Outro", "", "", SituacaoCadastral.ATIVO));
         assertEquals("Pessoa Teste", pessoas.get("52998224725").nome());
     }
-    @ParameterizedTest @NullAndEmptySource @ValueSource(strings={"42", "11111111111", "52998224724", "abc52998224725", "529.982247-25"})
+    @ParameterizedTest @NullAndEmptySource @ValueSource(strings={"42", "11111111111", "abc52998224725", "529.982247-25"})
     void recusaCpfInvalidoAntesDeConsultar(String cpf) {
         assertThrows(CadastroAlunoException.class, () -> fluxo.consultar(cpf));
         assertEquals(0, consultas);

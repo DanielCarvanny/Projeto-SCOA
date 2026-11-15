@@ -26,13 +26,32 @@ class RepositorioAlunosMysqlIT {
         }
         var flyway = MigracoesAcademico.configurar(banco);
         // Baseline explícito somente na fixture de testes; não adota esquema de produção.
-        if (flyway.info().all().length == 1 && flyway.info().applied().length == 0) {
+        if (flyway.info().applied().length == 0) {
             org.flywaydb.core.Flyway.configure().dataSource(banco.url(), banco.usuario(), banco.senha())
                 .table("flyway_academico_schema_history").baselineVersion("0").load().baseline();
         }
-        flyway.migrate();
+        if (flyway.info().applied().length == 1) {
+            // Em instalação limpa: instala V001, cria registro sentinela e verifica atualização para V002.
+            org.flywaydb.core.Flyway.configure().configuration(flyway.getConfiguration()).target("001").load().migrate();
+            try (var c = banco.abrir(); var s = c.createStatement()) {
+                s.executeUpdate("INSERT INTO pessoa(id) VALUES(989001)");
+                s.executeUpdate("INSERT INTO aluno(pessoa_id,situacao_cadastral) VALUES(989001,'ATIVO')");
+            }
+            flyway.migrate();
+            try (var c = banco.abrir(); var s = c.createStatement(); var r = s.executeQuery("SELECT COUNT(*) FROM aluno WHERE pessoa_id=989001 AND situacao_cadastral='ATIVO'")) {
+                r.next(); assertEquals(1, r.getInt(1), "Atualização V001 para V002 deve preservar aluno");
+            }
+        } else {
+            flyway.migrate();
+        }
     }
 
+    @Test void consultaPorPessoaUsaVinculoPersistidoSemConfundirIds() {
+        var aluno=repositorio.cadastrar(42,SituacaoCadastral.ATIVO,7);
+        assertEquals(aluno,repositorio.consultarPorPessoa(42).orElseThrow());
+        assertTrue(repositorio.consultarPorPessoa(43).isEmpty());
+        assertThrows(CadastroAlunoException.class,()->repositorio.consultarPorPessoa(0));
+    }
     @BeforeEach void limparDadosSinteticos() throws Exception {
         try (var c = banco.abrir(); var s = c.createStatement()) {
             s.execute("DROP TRIGGER IF EXISTS teste_falha_auditoria");

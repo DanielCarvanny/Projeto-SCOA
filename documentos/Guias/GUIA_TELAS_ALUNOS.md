@@ -1,4 +1,8 @@
-> Atualização de 11/11/2026: a demonstração agora exibe nome/CPF/contato e permite editar dados pessoais. Consulte [ficha e edição](ENTREGA_FICHA_PESSOA_ALUNO.md). A integração real com a Fundação permanece pendente.
+> Registro histórico da primeira interface. Não usar as instruções de criar Pessoa dentro de Alunos nem as pendências de Fundação abaixo como estado atual. Consulte o [fluxo vigente](../academico/ENTREGA_PESSOA_VINCULOS_CONTA.md). Na demonstração atual, o CPF sintético 12345678901 já identifica uma Pessoa disponível para criar vínculos.
+
+> Atualização vigente de 11/11/2026: cadastro com escolha de pessoa nova/existente, consulta de aluno por CPF e catálogo de seis títulos. Use o [roteiro atualizado](../academico/ENTREGA_UX_CADASTROS.md). As etapas e contagens anteriores abaixo registram a entrega da época.
+
+> Atualização de 11/11/2026: a demonstração agora exibe nome/CPF/contato e permite editar dados pessoais. Consulte [ficha e edição](../academico/ENTREGA_FICHA_PESSOA_ALUNO.md). A integração real com a Fundação permanece pendente.
 
 # ACA-01 — Telas guiadas de Alunos
 

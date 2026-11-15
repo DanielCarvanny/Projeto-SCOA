@@ -27,7 +27,6 @@ public final class PainelCadastroCpf extends JPanel {
     private final ControladorAlunos gestao;
     private final DialogosAluno dialogos;
     private boolean consultado;
-    private boolean pessoaNova;
     private boolean ocupado;
 
     public PainelCadastroCpf(CadastroAlunoPorCpf cadastro, ControladorAlunos gestao, DialogosAluno dialogos, String contexto) {
@@ -60,16 +59,16 @@ public final class PainelCadastroCpf extends JPanel {
         buscar.addActionListener(evento -> {
             String documento = cpf.getText(); invalidar();
             executar(() -> cadastro.consultar(documento), encontrada -> {
-                consultado = true; pessoaNova = encontrada.isEmpty();
+                consultado = encontrada.isPresent();
                 encontrada.ifPresent(pessoa -> { nome.setText(pessoa.nome()); email.setText(pessoa.email()); telefone.setText(pessoa.telefone()); });
-                estado.setText(pessoaNova ? "Pessoa não encontrada. Preencha os dados obrigatórios para cadastrar." : "Pessoa encontrada. Confira os dados antes de cadastrar o aluno.");
+                estado.setText(encontrada.isEmpty() ? "Pessoa não cadastrada. Cadastre-a em Pessoas antes de criar este vínculo." : "Pessoa encontrada. Confira os dados antes de cadastrar o aluno.");
             });
         });
         cadastrar.addActionListener(evento -> {
             if (!consultado || ocupado) return;
             String documento = cpf.getText(), nomeInformado = nome.getText(), emailInformado = email.getText(), telefoneInformado = telefone.getText();
             SituacaoCadastral valor = (SituacaoCadastral) situacao.getSelectedItem();
-            if (!dialogos.confirmar(this, pessoaNova ? "Cadastrar a pessoa informada e seu vínculo de aluno?" : "Criar o vínculo de aluno para " + nomeInformado + "?")) return;
+            if (!dialogos.confirmar(this, "Criar o vínculo de aluno para " + nomeInformado + "?")) return;
             executar(() -> cadastro.cadastrar(documento, nomeInformado, emailInformado, telefoneInformado, valor), aluno -> {
                 alunoId.setText(Long.toString(aluno.id())); consultado = false;
                 estado.setText("Aluno cadastrado. ID: " + aluno.id()); dialogos.informar(this, "Aluno cadastrado. ID: " + aluno.id());
@@ -95,14 +94,14 @@ public final class PainelCadastroCpf extends JPanel {
         atualizarControles();
     }
     private void invalidar() {
-        consultado = false; pessoaNova = false;
+        consultado = false;
         nome.setText(""); email.setText(""); telefone.setText(""); alunoId.setText("");
         estado.setText("Informe o CPF e clique em Buscar CPF."); atualizarControles();
     }
     private void atualizarControles() {
         for (JComponent componente : new JComponent[]{cpf, buscar, consultar, atualizar, limpar, alunoId, situacao}) componente.setEnabled(!ocupado);
         cadastrar.setEnabled(!ocupado && consultado);
-        for (JTextField campo : new JTextField[]{nome, email, telefone}) campo.setEditable(!ocupado && consultado && pessoaNova);
+        for (JTextField campo : new JTextField[]{nome, email, telefone}) campo.setEditable(false);
     }
     private static void campo(JPanel painel, String texto, JComponent campo, String nome) {
         JLabel rotulo = new JLabel(texto); rotulo.setLabelFor(campo); campo.setName(nome); painel.add(rotulo); painel.add(campo);
@@ -122,7 +121,7 @@ public final class PainelCadastroCpf extends JPanel {
     private void erro(Throwable falha) {
         estado.setText("Operação não concluída.");
         String mensagem = falha instanceof CadastroAlunoException excecao && excecao.codigo() == ErroCadastroAluno.ENTRADA_INVALIDA
-                ? "Confira o CPF (incluindo os dígitos verificadores), nome, e-mail e situação cadastral."
+                ? "Confira o identificador e a situação cadastral."
                 : ControladorAlunos.mensagemErro(falha);
         dialogos.erro(this, mensagem);
     }

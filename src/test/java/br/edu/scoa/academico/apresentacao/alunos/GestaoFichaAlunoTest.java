@@ -59,6 +59,7 @@ class GestaoFichaAlunoTest {
     }
     @Test void novaTentativaReutilizaPessoaAposFalhaDoVinculo() {
         var novo = new CenarioCpf();
+        novo.cadastrarOuObter(7,"12345678909","Pessoa Teste","teste@example.invalid","");
         var falhar = new java.util.concurrent.atomic.AtomicBoolean(true);
         RepositorioAlunos repositorio = (id, situacao, autor) -> {
             if (falhar.getAndSet(false)) throw new IllegalStateException("Falha simulada de gravação");

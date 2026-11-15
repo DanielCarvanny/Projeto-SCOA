@@ -18,6 +18,7 @@ class DadosDemonstracaoAlunosTest {
         var cenario = DadosDemonstracaoAlunos.criar();
         cenario.gestao().atualizar("1", SituacaoCadastral.INATIVO);
         assertEquals(SituacaoCadastral.INATIVO, cenario.gestao().consultar("1").situacaoCadastral());
+        cenario.cadastrarOuObter(7,"12345678909","Nova Pessoa Teste","nova@example.invalid","");
         assertEquals(3, cenario.cadastro().cadastrar("12345678909", "Nova Pessoa Teste", "nova@example.invalid", "", SituacaoCadastral.ATIVO).id());
         var reiniciado = DadosDemonstracaoAlunos.criar();
         assertEquals(SituacaoCadastral.ATIVO, reiniciado.gestao().consultar("1").situacaoCadastral());

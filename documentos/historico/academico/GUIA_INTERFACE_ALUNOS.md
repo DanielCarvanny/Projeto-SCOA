@@ -1,3 +1,5 @@
+> Documento histórico: registra o estado da época. Para orientação atual, consulte o índice em documentos/README.md.
+
 > Atualização de 10/11/2026: a demonstração agora começa pelo CPF. Consulte [fluxo vigente e roteiro](GUIA_CADASTRO_CPF.md). O conteúdo abaixo registra a primeira versão por IDs.
 
 # Interface inicial de Alunos — Swing

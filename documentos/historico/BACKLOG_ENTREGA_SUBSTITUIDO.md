@@ -1,4 +1,6 @@
-> HISTÓRICO — SUBSTITUÍDO EM 09/11/2026. Não usar como instrução vigente. Pacotes e governança: documentos/entrega_modular/. QA/REL: documentos/PLANO_TESTES_ENTREGA.md. Conteúdo original preservado abaixo.
+> Documento histórico: registra o estado da época. Para orientação atual, consulte o índice em documentos/README.md.
+
+> HISTÓRICO — SUBSTITUÍDO EM 09/11/2026. Não usar como instrução vigente. Pacotes e governança: documentos/entrega_modular/. QA/REL: documentos/planejamento/PLANO_TESTES_ENTREGA.md. Conteúdo original preservado abaixo.
 
 # SCOA — backlog para reunião e entrega em 30/11/2026
 

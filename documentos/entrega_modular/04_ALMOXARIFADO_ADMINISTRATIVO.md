@@ -1,3 +1,5 @@
+> Atualização de responsabilidade — 13/11/2026: por determinação explícita de Dan nesta conversa, Pessoa, conta, login, sessão e permissões do Acadêmico são implementados por A. A atribuição anterior dessa identidade a D e a espera pela Fundação estão superadas para este escopo. D mantém as demais responsabilidades de infraestrutura; contratos consumidos por outros módulos continuam sujeitos ao acordo com seus responsáveis. Não há alteração de pontos nem aceite automático do incremento.
+
 # Pacote 04_ALMOXARIFADO_ADMINISTRATIVO — Integrante D
 
 Responsável nominal: a preencher. Prazo final: 30/11/2026.
@@ -6,7 +8,7 @@ Materiais, patrimônio, recursos e folha. Entregar a fundação compartilhada pr
 
 13 incrementos; 49 SP de referência. Pontos incluem interface, aplicação, persistência e testes locais. Não equivalem a horas nem asseguram cabimento no prazo. Todos os RF listados permanecem no escopo; P0/P1/P2 do arquivo anterior passam a indicar apenas ordem de construção.
 
-Leia primeiro AGENTS.md na raiz e documentos/entrega_modular/GOVERNANCA.md. Consulte documentos/PLANO_TESTES_ENTREGA.md para QA/REL. As dependências identificam interfaces/dados necessários; usar implementações simuladas locais até o provedor estar disponível e depois executar obrigatoriamente os testes reais.
+Leia primeiro AGENTS.md na raiz e documentos/entrega_modular/GOVERNANCA.md. Consulte documentos/planejamento/PLANO_TESTES_ENTREGA.md para QA/REL. As dependências identificam interfaces/dados necessários; usar implementações simuladas locais até o provedor estar disponível e depois executar obrigatoriamente os testes reais.
 
 ## [BAS-01][3 SP] Aplicação executável e banco versionado
 

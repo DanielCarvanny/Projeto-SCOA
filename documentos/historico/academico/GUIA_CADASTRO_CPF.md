@@ -1,4 +1,6 @@
-> Fluxo vigente: a demonstração foi dividida em menu, cadastro guiado, consulta, detalhes e alteração. Consulte [guia das telas](GUIA_TELAS_ALUNOS.md). O conteúdo abaixo documenta a versão anterior.
+> Documento histórico: registra o estado da época. Para orientação atual, consulte o índice em documentos/README.md.
+
+> Fluxo vigente: a demonstração foi dividida em menu, cadastro guiado, consulta, detalhes e alteração. Consulte [guia das telas](../../Guias/GUIA_TELAS_ALUNOS.md). O conteúdo abaixo documenta a versão anterior.
 
 # ACA-01 — Cadastro de aluno por CPF
 

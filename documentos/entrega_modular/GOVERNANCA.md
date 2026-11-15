@@ -1,3 +1,5 @@
+> Atualização de responsabilidade — 13/11/2026: por determinação explícita de Dan nesta conversa, Pessoa, conta, login, sessão e permissões do Acadêmico são implementados por A. A atribuição anterior dessa identidade a D e a espera pela Fundação estão superadas para este escopo. D mantém as demais responsabilidades de infraestrutura; contratos consumidos por outros módulos continuam sujeitos ao acordo com seus responsáveis. Não há alteração de pontos nem aceite automático do incremento.
+
 # Execução por módulo, sem reunião de refinamento
 
 Esta organização é vigente; o planejamento anterior está arquivado em documentos/historico/BACKLOG_ENTREGA_SUBSTITUIDO.md e não orienta a execução atual. Mantém todos os requisitos, com estimativas de referência atribuídas pelo PO. Como há cinco módulos para quatro pessoas, a proposta agrupa Almoxarifado e Administrativo no mesmo responsável, preservando sua separação técnica. Os nomes dos quatro responsáveis podem ser preenchidos diretamente nos pacotes.
@@ -36,7 +38,7 @@ A: médias, exame final, frequência e calendário. B: fórmula de mensalidade, 
 
 ## Testes integrados e responsabilidade
 
-A+B executam QA-01; B+C executam QA-02; D executa QA-03 com revisão de C. Cada integrante testa acesso e auditoria de seu módulo (QA-04); todos fornecem regressão e medições de suas operações (QA-05). C consolida evidências, A coordena aceite do fluxo acadêmico e cada responsável aceita seu módulo (QA-06). D mantém instalação reproduzível (REL-01); C monta roteiro/pacote com contribuição dos quatro (REL-02). IDs e critérios detalhados estão em documentos/PLANO_TESTES_ENTREGA.md. Essas atividades têm capacidade reservada e não desaparecem com a divisão por módulo.
+A+B executam QA-01; B+C executam QA-02; D executa QA-03 com revisão de C. Cada integrante testa acesso e auditoria de seu módulo (QA-04); todos fornecem regressão e medições de suas operações (QA-05). C consolida evidências, A coordena aceite do fluxo acadêmico e cada responsável aceita seu módulo (QA-06). D mantém instalação reproduzível (REL-01); C monta roteiro/pacote com contribuição dos quatro (REL-02). IDs e critérios detalhados estão em documentos/planejamento/PLANO_TESTES_ENTREGA.md. Essas atividades têm capacidade reservada e não desaparecem com a divisão por módulo.
 
 ## Datas de controle assíncrono
 

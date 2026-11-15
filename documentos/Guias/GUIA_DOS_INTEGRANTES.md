@@ -12,7 +12,7 @@ Este guia explica a execução por quatro integrantes e suas equipes de agentes.
 | `documentos/entrega_modular/02_FINANCEIRO.md` | Incrementos de B, incluindo contratos compartilhados. |
 | `documentos/entrega_modular/03_BIBLIOTECA.md` | Incrementos de C; também consolida evidências e roteiro final. |
 | `documentos/entrega_modular/04_ALMOXARIFADO_ADMINISTRATIVO.md` | Incrementos de D, mantendo os dois módulos separados; inclui fundação. |
-| `documentos/PLANO_TESTES_ENTREGA.md` | Fonte vigente dos cartões QA/REL, evidências e critérios de liberação. |
+| `documentos/planejamento/PLANO_TESTES_ENTREGA.md` | Fonte vigente dos cartões QA/REL, evidências e critérios de liberação. |
 | PDF do projeto | Fonte dos requisitos e regras do produto. Os pacotes não substituem sua leitura nas seções relacionadas. |
 
 Os IDs de cartões e os IDs de requisitos não são equivalentes: o cartão ACA-04 implementa os RF acadêmicos 18 e 19. Sempre conferir o campo “Referência” do incremento antes de buscar o requisito.

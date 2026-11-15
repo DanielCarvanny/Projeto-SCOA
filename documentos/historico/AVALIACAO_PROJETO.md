@@ -1,3 +1,5 @@
+> Documento histórico: registra o estado da época. Para orientação atual, consulte o índice em documentos/README.md.
+
 # Avaliação da pasta — 09/11/2026
 
 ## Diagnóstico

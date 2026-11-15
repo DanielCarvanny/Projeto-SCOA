@@ -1,3 +1,5 @@
+> Atualização de responsabilidade — 13/11/2026: por determinação explícita de Dan nesta conversa, Pessoa, conta, login, sessão e permissões do Acadêmico são implementados por A. A atribuição anterior dessa identidade a D e a espera pela Fundação estão superadas para este escopo. D mantém as demais responsabilidades de infraestrutura; contratos consumidos por outros módulos continuam sujeitos ao acordo com seus responsáveis. Não há alteração de pontos nem aceite automático do incremento.
+
 # ADR-001 — base de desenvolvimento do Acadêmico
 
 Data: 10/11/2026. Status: proposta implementada para validação da equipe.

@@ -29,6 +29,7 @@ final class CenarioAlunos implements RepositorioGestaoAlunos, IdentidadeInstituc
         alunos.put(aluno.id(), aluno); autor = usuario; escritas++;
         return aluno;
     }
+    public Optional<Aluno> consultarPorPessoa(long id) { return alunos.values().stream().filter(a -> a.pessoaId() == id).findFirst(); }
     public Optional<Aluno> consultar(long id) { return Optional.ofNullable(alunos.get(id)); }
     public Aluno atualizarSituacao(long id, SituacaoCadastral situacao, long usuario) {
         var anterior = consultar(id).orElseThrow(() -> new CadastroAlunoException(ErroCadastroAluno.ALUNO_NAO_ENCONTRADO));

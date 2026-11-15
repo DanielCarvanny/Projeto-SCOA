@@ -69,6 +69,7 @@ class GestaoAlunosTest {
         assertEquals(codigo, assertThrows(CadastroAlunoException.class, operacao::run).codigo());
     }
     static final class RepositorioFake implements RepositorioGestaoAlunos {
+        public java.util.Optional<Aluno> consultarPorPessoa(long id) { throw new UnsupportedOperationException(); }
         Aluno aluno = new Aluno(10,42,SituacaoCadastral.ATIVO);
         int leituras, escritas;
         long autor;

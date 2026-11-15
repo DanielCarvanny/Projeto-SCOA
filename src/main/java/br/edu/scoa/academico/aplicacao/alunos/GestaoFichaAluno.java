@@ -18,14 +18,24 @@ public final class GestaoFichaAluno {
         conferir(aluno.pessoaId(), pessoa);
         return new FichaAluno(aluno, pessoa);
     }
+    public FichaAluno consultarPorCpf(String cpf, PessoasPorCpf identidade) {
+        String documento = ValidacaoPessoa.cpf(cpf);
+        if (usuarioId <= 0) throw new CadastroAlunoException(ErroCadastroAluno.NAO_AUTORIZADO);
+        // O provedor autoriza a consulta institucional; a autorização por aluno ocorre abaixo.
+        var pessoa = identidade.consultar(usuarioId, documento).orElseThrow(
+                () -> new CadastroAlunoException(ErroCadastroAluno.PESSOA_NAO_ENCONTRADA));
+        if (pessoa.pessoaId() <= 0 || !documento.equals(pessoa.cpf()))
+            throw new FalhaDadosPessoais(FalhaDadosPessoais.Codigo.RESPOSTA_INCONSISTENTE);
+        var aluno = consulta.porPessoa(usuarioId, pessoa.pessoaId());
+        return new FichaAluno(aluno, pessoa);
+    }
     public FichaAluno atualizar(FichaAluno esperada, String nome, String email, String telefone) {
         if (esperada == null || esperada.aluno() == null || esperada.pessoa() == null) throw invalida();
         var aluno = consulta.executar(usuarioId, esperada.aluno().id());
-        if (!acesso.podeAtualizarAluno(usuarioId, aluno.id())) throw new CadastroAlunoException(ErroCadastroAluno.NAO_AUTORIZADO);
+        if (!acesso.podeAtualizarDadosPessoais(usuarioId, aluno.id())) throw new CadastroAlunoException(ErroCadastroAluno.NAO_AUTORIZADO);
         conferir(aluno.pessoaId(), esperada.pessoa());
         String nomeLimpo = limpar(nome), emailLimpo = limpar(email), telefoneLimpo = limpar(telefone);
-        if (nomeLimpo.isEmpty() || nomeLimpo.length() > 200 || emailLimpo.length() > 254
-                || !emailLimpo.matches("[^\\s@]+@[^\\s@]+\\.[^\\s@]+") || telefoneLimpo.length() > 30) throw invalida();
+        ValidacaoPessoa.dados(nomeLimpo, emailLimpo, telefoneLimpo);
         var pessoa = pessoas.atualizar(usuarioId, esperada.pessoa(), nomeLimpo, emailLimpo, telefoneLimpo);
         conferir(aluno.pessoaId(), pessoa);
         if (!esperada.pessoa().cpf().equals(pessoa.cpf())) throw new FalhaDadosPessoais(FalhaDadosPessoais.Codigo.RESPOSTA_INCONSISTENTE);

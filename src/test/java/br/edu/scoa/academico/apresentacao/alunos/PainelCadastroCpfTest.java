@@ -49,16 +49,16 @@ class PainelCadastroCpfTest {
         SwingUtilities.invokeAndWait(() -> assertEquals("1", texto("alunoId").getText()));
         assertEquals(42, cenario.alunos.consultar(1).orElseThrow().pessoaId());
     }
-    @Test void permitePessoaNovaECancelamentoNaoGrava() throws Exception {
+    @Test void pessoaAusenteNaoLiberaCriacaoNoPainelLegado() throws Exception {
         criar(); buscar("12345678909");
         SwingUtilities.invokeAndWait(() -> {
-            assertTrue(texto("nome").isEditable()); texto("nome").setText("Pessoa Nova Teste");
+            assertFalse(texto("nome").isEditable()); assertFalse(botao("cadastrar").isEnabled());
             texto("email").setText("nova@example.invalid"); botao("cadastrar").doClick();
         });
         assertEquals(2, cenario.pessoas.size()); assertEquals(0, cenario.alunos.escritas);
         dialogos.confirmar = true;
         SwingUtilities.invokeAndWait(() -> botao("cadastrar").doClick()); aguardar();
-        assertEquals(3, cenario.pessoas.size()); assertEquals(1, cenario.alunos.escritas);
+        assertEquals(2, cenario.pessoas.size()); assertEquals(0, cenario.alunos.escritas);
     }
     @Test void cpfInvalidoNaoLiberaCadastro() throws Exception {
         criar(); buscar("11111111111");

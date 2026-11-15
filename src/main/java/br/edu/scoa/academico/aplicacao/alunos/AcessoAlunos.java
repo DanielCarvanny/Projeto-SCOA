@@ -6,4 +6,5 @@ package br.edu.scoa.academico.aplicacao.alunos;
 public interface AcessoAlunos {
     boolean podeConsultarAluno(long usuarioId, long alunoId);
     boolean podeAtualizarAluno(long usuarioId, long alunoId);
+    default boolean podeAtualizarDadosPessoais(long usuarioId,long alunoId) { return podeAtualizarAluno(usuarioId,alunoId); }
 }

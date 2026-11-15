@@ -1,0 +1,414 @@
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------------< br.edu.scoa:scoa >--------------------------
+[INFO] Building scoa 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ scoa ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO]
+[INFO] --- compiler:3.14.1:compile (default-compile) @ scoa ---
+[INFO] Recompiling the module because of added or removed source files.
+[INFO] Compiling 36 source files with javac [debug release 21] to target\classes
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ scoa ---
+[INFO] Copying 2 resources from src\test\resources to target\test-classes
+[INFO]
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ scoa ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 18 source files with javac [debug release 21] to target\test-classes
+[INFO]
+[INFO] --- surefire:3.5.4:test (default-test) @ scoa ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.101 s -- in br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Running br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.101 s -- in br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.CadastroAlunoPorCpfTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in br.edu.scoa.academico.apresentacao.alunos.CadastroAlunoPorCpfTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.ControladorAlunosTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in br.edu.scoa.academico.apresentacao.alunos.ControladorAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.DadosDemonstracaoAlunosTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in br.edu.scoa.academico.apresentacao.alunos.DadosDemonstracaoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.FluxoAlunosTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.501 s -- in br.edu.scoa.academico.apresentacao.alunos.FluxoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.FluxoFichaAlunoTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.015 s -- in br.edu.scoa.academico.apresentacao.alunos.FluxoFichaAlunoTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.GestaoFichaAlunoTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in br.edu.scoa.academico.apresentacao.alunos.GestaoFichaAlunoTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest
+[ERROR] Tests run: 13, Failures: 7, Errors: 6, Skipped: 0, Time elapsed: 0.022 s <<< FAILURE! -- in br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.pessoaAusenteOuFalhaNaoRetornaFichaIncompleta -- Time elapsed: 0.004 s <<< ERROR!
+java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cadastrar(GestaoProfessoresTest.java:11)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.pessoaAusenteOuFalhaNaoRetornaFichaIncompleta(GestaoProfessoresTest.java:45)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.dadosDocentesObrigatoriosAntesDeCriarPessoa -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.dadosDocentesObrigatoriosAntesDeCriarPessoa(GestaoProfessoresTest.java:25)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.lambda$dadosDocentesObrigatoriosAntesDeCriarPessoa$1(GestaoProfessoresTest.java:25)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.recusaEdicaoDesatualizada -- Time elapsed: 0 s <<< ERROR!
+java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cadastrar(GestaoProfessoresTest.java:11)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.recusaEdicaoDesatualizada(GestaoProfessoresTest.java:37)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cadastroConsultaAtualizacaoPreservamPessoaETitulacao -- Time elapsed: 0 s <<< ERROR!
+java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cadastrar(GestaoProfessoresTest.java:11)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cadastroConsultaAtualizacaoPreservamPessoaETitulacao(GestaoProfessoresTest.java:13)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.acessoNegadoNaoConsultaNemGrava -- Time elapsed: 0 s <<< ERROR!
+java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cadastrar(GestaoProfessoresTest.java:11)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.acessoNegadoNaoConsultaNemGrava(GestaoProfessoresTest.java:31)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.recusaVinculoDuplicado -- Time elapsed: 0 s <<< ERROR!
+java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cadastrar(GestaoProfessoresTest.java:11)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.recusaVinculoDuplicado(GestaoProfessoresTest.java:18)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor(String)[1] -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor(GestaoProfessoresTest.java:21)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.lambda$cpfInvalidoNaoCriaPessoaOuProfessor$0(GestaoProfessoresTest.java:21)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 22 more
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor(String)[2] -- Time elapsed: 0 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor(GestaoProfessoresTest.java:21)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.lambda$cpfInvalidoNaoCriaPessoaOuProfessor$0(GestaoProfessoresTest.java:21)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 22 more
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor(String)[3] -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor(GestaoProfessoresTest.java:21)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.lambda$cpfInvalidoNaoCriaPessoaOuProfessor$0(GestaoProfessoresTest.java:21)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 38 more
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor(String)[4] -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor(GestaoProfessoresTest.java:21)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.lambda$cpfInvalidoNaoCriaPessoaOuProfessor$0(GestaoProfessoresTest.java:21)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 38 more
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor(String)[5] -- Time elapsed: 0 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor(GestaoProfessoresTest.java:21)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.lambda$cpfInvalidoNaoCriaPessoaOuProfessor$0(GestaoProfessoresTest.java:21)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 38 more
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor(String)[6] -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor(GestaoProfessoresTest.java:21)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.lambda$cpfInvalidoNaoCriaPessoaOuProfessor$0(GestaoProfessoresTest.java:21)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 38 more
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.criaPessoaNovaEEditaContatoSemTrocarCpf -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.UnsupportedOperationException: RED
+	at br.edu.scoa.academico.aplicacao.professores.GestaoProfessores.cadastrar(GestaoProfessores.java:16)
+	at br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest.criaPessoaNovaEEditaContatoSemTrocarCpf(GestaoProfessoresTest.java:39)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.PainelAlunosTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.702 s -- in br.edu.scoa.academico.apresentacao.alunos.PainelAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.PainelCadastroCpfTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.977 s -- in br.edu.scoa.academico.apresentacao.alunos.PainelCadastroCpfTest
+[INFO] Running br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[INFO]
+[INFO] Results:
+[INFO]
+[ERROR] Failures:
+[ERROR]   GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor:21 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor:21 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor:21 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor:21 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor:21 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   GestaoProfessoresTest.cpfInvalidoNaoCriaPessoaOuProfessor:21 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   GestaoProfessoresTest.dadosDocentesObrigatoriosAntesDeCriarPessoa:25 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.professores.FalhaProfessor> but was: <java.lang.UnsupportedOperationException>
+[ERROR] Errors:
+[ERROR]   GestaoProfessoresTest.acessoNegadoNaoConsultaNemGrava:31->cadastrar:11 � UnsupportedOperation RED
+[ERROR]   GestaoProfessoresTest.cadastroConsultaAtualizacaoPreservamPessoaETitulacao:13->cadastrar:11 � UnsupportedOperation RED
+[ERROR]   GestaoProfessoresTest.criaPessoaNovaEEditaContatoSemTrocarCpf:39 � UnsupportedOperation RED
+[ERROR]   GestaoProfessoresTest.pessoaAusenteOuFalhaNaoRetornaFichaIncompleta:45->cadastrar:11 � UnsupportedOperation RED
+[ERROR]   GestaoProfessoresTest.recusaEdicaoDesatualizada:37->cadastrar:11 � UnsupportedOperation RED
+[ERROR]   GestaoProfessoresTest.recusaVinculoDuplicado:18->cadastrar:11 � UnsupportedOperation RED
+[INFO]
+[ERROR] Tests run: 101, Failures: 7, Errors: 6, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.426 s
+[INFO] Finished at: 2026-11-11T10:29:32-03:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.4:test (default-test) on project scoa: There are test failures.
+[ERROR]
+[ERROR] See C:\Users\Dan\SCOA\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

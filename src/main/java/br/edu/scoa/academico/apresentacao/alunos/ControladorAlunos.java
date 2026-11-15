@@ -28,6 +28,8 @@ public final class ControladorAlunos {
         return atualizar.executar(usuarioId, identificador(alunoId), situacao);
     }
     public static String mensagemErro(Throwable erro) {
+        if (erro instanceof br.edu.scoa.academico.aplicacao.identidade.FalhaIdentidade falha)
+            return br.edu.scoa.academico.apresentacao.identidade.MensagensIdentidade.erro(falha);
         if (erro instanceof FalhaDadosPessoais falha) {
             return switch (falha.codigo()) {
                 case CONFLITO_EDICAO -> "Os dados foram alterados por outra operação. Volte à busca e consulte novamente antes de editar.";
@@ -36,11 +38,16 @@ public final class ControladorAlunos {
         }
         if (erro instanceof CadastroAlunoException falha) {
             return switch (falha.codigo()) {
+                case CPF_INVALIDO -> "CPF inválido. Informe 11 números válidos, com ou sem pontuação.";
+                case NOME_INVALIDO -> "Informe o nome completo, com até 200 caracteres.";
+                case EMAIL_INVALIDO -> "Informe um e-mail válido, com até 254 caracteres.";
+                case TELEFONE_INVALIDO -> "O telefone deve ter até 30 caracteres.";
+                case PESSOA_JA_CADASTRADA -> "Este CPF já possui cadastro. Volte e escolha Usar uma pessoa já cadastrada.";
                 case ENTRADA_INVALIDA -> "Informe identificadores positivos e uma situação cadastral.";
                 case NAO_AUTORIZADO -> "Você não tem permissão para esta operação.";
-                case PESSOA_NAO_ENCONTRADA -> "Pessoa institucional não encontrada.";
+                case PESSOA_NAO_ENCONTRADA -> "Pessoa não cadastrada. Cadastre-a em Pessoas antes de criar este vínculo.";
                 case ALUNO_JA_CADASTRADO -> "Esta pessoa já possui cadastro de aluno.";
-                case ALUNO_NAO_ENCONTRADO -> "Aluno não encontrado.";
+                case ALUNO_NAO_ENCONTRADO -> "Aluno não encontrado. A pessoa pode ainda não possuir vínculo de aluno.";
             };
         }
         return "Não foi possível concluir a operação. Tente novamente ou contate o responsável.";

@@ -1,0 +1,112 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------------< br.edu.scoa:scoa >--------------------------
+[INFO] Building scoa 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ scoa ---
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ scoa ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ scoa ---
+[INFO] Copying 2 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ scoa ---
+[INFO] Recompiling the module because of added or removed source files.
+[INFO] Compiling 29 source files with javac [debug release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ scoa ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s -- in br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Running br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s -- in br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.CadastroAlunoPorCpfTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in br.edu.scoa.academico.apresentacao.alunos.CadastroAlunoPorCpfTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.CadastroSomenteVinculoTest
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.009 s <<< FAILURE! -- in br.edu.scoa.academico.apresentacao.alunos.CadastroSomenteVinculoTest
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.CadastroSomenteVinculoTest.cadastrarAlunoOuProfessorNaoCriaPessoaImplicitamente -- Time elapsed: 0.006 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at br.edu.scoa.academico.apresentacao.alunos.CadastroSomenteVinculoTest.cadastrarAlunoOuProfessorNaoCriaPessoaImplicitamente(CadastroSomenteVinculoTest.java:13)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.ControladorAlunosTest
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in br.edu.scoa.academico.apresentacao.alunos.ControladorAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.DadosDemonstracaoAlunosTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in br.edu.scoa.academico.apresentacao.alunos.DadosDemonstracaoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.FluxoAlunosTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.564 s -- in br.edu.scoa.academico.apresentacao.alunos.FluxoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.FluxoFichaAlunoTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.040 s -- in br.edu.scoa.academico.apresentacao.alunos.FluxoFichaAlunoTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.FluxoProfessoresTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.536 s -- in br.edu.scoa.academico.apresentacao.alunos.FluxoProfessoresTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.FluxosCadastroExplicitoTest
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in br.edu.scoa.academico.apresentacao.alunos.FluxosCadastroExplicitoTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.GestaoFichaAlunoTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in br.edu.scoa.academico.apresentacao.alunos.GestaoFichaAlunoTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.PainelAlunosTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.712 s -- in br.edu.scoa.academico.apresentacao.alunos.PainelAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.PainelCadastroCpfTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.975 s -- in br.edu.scoa.academico.apresentacao.alunos.PainelCadastroCpfTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.RegressaoUxTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.152 s -- in br.edu.scoa.academico.apresentacao.alunos.RegressaoUxTest
+[INFO] Running br.edu.scoa.academico.identidade.ContaExigeVinculoTest
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.017 s <<< FAILURE! -- in br.edu.scoa.academico.identidade.ContaExigeVinculoTest
+[ERROR] br.edu.scoa.academico.identidade.ContaExigeVinculoTest.alunoEProfessorSemVinculoNaoRecebemContaNemTrocaDePerfil -- Time elapsed: 0.017 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected br.edu.scoa.academico.aplicacao.identidade.FalhaIdentidade to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at br.edu.scoa.academico.identidade.ContaExigeVinculoTest.alunoEProfessorSemVinculoNaoRecebemContaNemTrocaDePerfil(ContaExigeVinculoTest.java:19)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[INFO] Running br.edu.scoa.academico.identidade.SegurancaIdentidadeTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.716 s -- in br.edu.scoa.academico.identidade.SegurancaIdentidadeTest
+[INFO] Running br.edu.scoa.academico.identidade.ServicoETelasIdentidadeTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.377 s -- in br.edu.scoa.academico.identidade.ServicoETelasIdentidadeTest
+[INFO] Running br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   CadastroSomenteVinculoTest.cadastrarAlunoOuProfessorNaoCriaPessoaImplicitamente:13 Expected br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException to be thrown, but nothing was thrown.
+[ERROR]   ContaExigeVinculoTest.alunoEProfessorSemVinculoNaoRecebemContaNemTrocaDePerfil:19 Expected br.edu.scoa.academico.aplicacao.identidade.FalhaIdentidade to be thrown, but nothing was thrown.
+[INFO] 
+[ERROR] Tests run: 151, Failures: 2, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  18.957 s
+[INFO] Finished at: 2026-11-13T10:18:24-03:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.4:test (default-test) on project scoa: There are test failures.
+[ERROR] 
+[ERROR] See C:\Users\Dan\SCOA\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

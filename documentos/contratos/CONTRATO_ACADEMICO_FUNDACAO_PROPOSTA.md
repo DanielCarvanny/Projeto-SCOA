@@ -1,3 +1,5 @@
+> Atualização de responsabilidade — 13/11/2026: por determinação explícita de Dan nesta conversa, Pessoa, conta, login, sessão e permissões do Acadêmico são implementados por A. A atribuição anterior dessa identidade a D e a espera pela Fundação estão superadas para este escopo. D mantém as demais responsabilidades de infraestrutura; contratos consumidos por outros módulos continuam sujeitos ao acordo com seus responsáveis. Não há alteração de pontos nem aceite automático do incremento.
+
 # Contrato consumidor do Acadêmico com a fundação
 
 Data: 10/11/2026. Status: proposta pendente de validação por B e D. Não há implementação institucional real disponível, conforme informação do usuário.
@@ -36,8 +38,12 @@ Sem essas decisões, podem ser aprovados testes unitários e persistência com f
 
 ## Extensão consumidora por CPF
 
-Proposta local PessoasPorCpf: consultar(usuarioId, cpf) e cadastrarOuObter(usuarioId, cpf, nome, email, telefone). Retorna PessoaParaCadastro com pessoaId, cpf e dados de conferência. Aprovação B/D pendente. Contrato, recuperação de falha parcial e roteiro em [cadastro por CPF](GUIA_CADASTRO_CPF.md).
+Proposta local PessoasPorCpf: consultar(usuarioId, cpf) e cadastrarOuObter(usuarioId, cpf, nome, email, telefone). Retorna PessoaParaCadastro com pessoaId, cpf e dados de conferência. Aprovação B/D pendente. Contrato, recuperação de falha parcial e roteiro em [cadastro por CPF](../historico/academico/GUIA_CADASTRO_CPF.md).
 
 ## Ficha e edição pessoal — 11/11/2026
 
 DadosPessoaisInstitucionais propõe consultarPorId(usuarioId, pessoaId) e atualizar(usuarioId, esperada, nome, email, telefone). Provedor deve autorizar, auditar e comparar/escrever atomicamente; CPF e pessoaId não mudam. Aprovação B/D permanece pendente por decisão de Dan. Consulte ENTREGA_FICHA_PESSOA_ALUNO.md e MENSAGEM_FUNDACAO_PESSOA_ALUNO.md.
+
+## Professores — 11/11/2026
+
+AcessoProfessores propõe podeCadastrar(usuarioId), podeConsultar(usuarioId, professorId) e podeAtualizar(usuarioId, professorId). Não herdar permissões de Alunos. Reutiliza PessoasPorCpf e DadosPessoaisInstitucionais do consumidor acadêmico, sem implementar a Fundação. Aprovação B/D pendente. Professor mantém vínculo único com pessoaId, maior titulação e situação ATIVO/INATIVO. Consulte ENTREGA_PROFESSORES.md.

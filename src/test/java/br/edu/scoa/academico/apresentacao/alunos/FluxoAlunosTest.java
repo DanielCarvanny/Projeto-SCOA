@@ -42,12 +42,11 @@ class FluxoAlunosTest {
         SwingUtilities.invokeAndWait(() -> assertEquals("", ((JTextArea)item("textoDetalhes")).getText()));
     }
     @Test void erroDeCpfMantemIdentificacaoSemGravar() throws Exception { criar(); clicar("menuCadastrar"); preencher("cpf", "abc"); clicar("buscarCpf"); aguardar(); tela("identificar"); assertEquals(0, cenario.alunos.escritas); assertNotNull(dialogos.falha); }
-    @Test void pessoaNovaExigeDadosEPermiteCorrigirAntesDeConfirmar() throws Exception {
-        criar(); clicar("menuCadastrar"); preencher("cpf", "12345678909"); clicar("buscarCpf"); aguardar();
-        clicar("revisar"); tela("dados"); assertNotNull(dialogos.falha);
-        preencher("nome", "Nova Pessoa Teste"); preencher("email", "nova@example.invalid"); clicar("revisar");
-        clicar("voltarDados"); preencher("nome", "Nome Corrigido"); clicar("revisar"); clicar("confirmarCadastro"); aguardar();
-        tela("resultado"); assertEquals("Nome Corrigido", cenario.pessoas.get("12345678909").nome());
+    @Test void dadosPessoaisSaoSomenteConferenciaECancelamentoNaoGrava() throws Exception {
+        criar(); buscar();
+        SwingUtilities.invokeAndWait(()->{assertFalse(((JTextField)item("nome")).isEditable());assertFalse(((JTextField)item("email")).isEditable());assertFalse(((JTextField)item("telefone")).isEditable());});
+        clicar("revisar");clicar("cancelarRevisao");tela("menu");
+        assertEquals(0,cenario.alunos.escritas);assertEquals(2,cenario.pessoas.size());
     }
     @Test void gravaForaDaThreadGraficaEBloqueiaRepeticaoENavegacao() throws Exception {
         CountDownLatch iniciou = new CountDownLatch(1), liberar = new CountDownLatch(1);
@@ -74,6 +73,25 @@ class FluxoAlunosTest {
         previa("dados"); clicar("revisar"); previa("revisao"); clicar("confirmarCadastro"); aguardar(); previa("resultado");
         clicar("resultadoMenu"); clicar("menuConsultar"); previa("consulta"); preencher("alunoId", "1"); clicar("buscarAluno"); aguardar();
         previa("detalhes"); clicar("editarSituacao"); previa("alteracao");
+    }
+    @Test void pessoaExistenteAusenteNaoAbreFormularioNovo() throws Exception {
+        criar(); clicar("menuCadastrar"); preencher("cpf","12345678909"); clicar("buscarCpf"); aguardar();
+        tela("identificar"); assertTrue(dialogos.falha.contains("Cadastre-a em Pessoas")); assertEquals(2,cenario.pessoas.size());
+    }
+    @Test void consultaCpfMostraFichaEUsaSomenteCampoSelecionado() throws Exception {
+        cenario.cadastro().cadastrar("52998224725","","","",br.edu.scoa.academico.dominio.alunos.SituacaoCadastral.ATIVO);
+        SwingUtilities.invokeAndWait(() -> painel=new FluxoAlunos(cenario.cadastro(),cenario.gestao(),dialogos,"Teste",cenario.ficha()));
+        clicar("menuConsultar");
+        SwingUtilities.invokeAndWait(() -> ((JComboBox<?>)item("tipoBusca")).setSelectedItem("CPF"));
+        preencher("cpfBusca","529.982.247-25"); clicar("buscarAluno"); aguardar(); tela("detalhes");
+        SwingUtilities.invokeAndWait(() -> assertTrue(((JTextArea)item("textoDetalhes")).getText().contains("Pessoa Exemplo A")));
+        clicar("editarPessoa"); preencher("editarNome","Não salvar"); clicar("cancelarPessoa");
+        assertEquals("Pessoa Exemplo A",cenario.pessoas.get("52998224725").nome());
+    }
+    @Test void erroDeCpfNaoMencionaNomeOuEmail() throws Exception {
+        criar(); clicar("menuCadastrar"); previa("escolha"); preencher("cpf","5299822472"); clicar("buscarCpf"); aguardar();
+        assertTrue(dialogos.falha.contains("CPF inválido")); assertFalse(dialogos.falha.contains("nome")); assertFalse(dialogos.falha.contains("e-mail"));
+        clicar("voltarMenu"); tela("menu");
     }
     void previa(String nome) throws Exception {
         SwingUtilities.invokeAndWait(() -> {

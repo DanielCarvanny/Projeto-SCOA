@@ -1,6 +1,6 @@
 # SCOA — regras comuns para agentes de implementação
 
-Versão 1.0 — 06/11/2026. Aplicável a todos os módulos e agentes que trabalham neste repositório. Leia também `documentos/entrega_modular/GOVERNANCA.md`, o pacote atribuído e os requisitos correspondentes. Estas são convenções do projeto; a stack ainda precisa ser registrada por D. Não escolher frameworks individualmente.
+Versão 1.0 — 06/11/2026. Aplicável a todos os módulos e agentes que trabalham neste repositório. Leia também `documentos/entrega_modular/GOVERNANCA.md`, o pacote atribuído e os requisitos correspondentes. Estas são convenções do projeto; a base Java do Acadêmico está registrada nos ADRs de documentos/decisoes; alterações compartilhadas seguem a governança. Não escolher frameworks individualmente.
 
 ## 1. Antes de editar
 
@@ -14,14 +14,14 @@ Versão 1.0 — 06/11/2026. Aplicável a todos os módulos e agentes que trabalh
 
 | Área | Responsável humano |
 |---|---|
-| Acadêmico, seus testes e persistência | A |
+| Acadêmico, Pessoa/conta, login, sessão, permissões, seus testes e persistência | A |
 | Financeiro, seus testes e persistência | B |
 | Biblioteca, seus testes e persistência | C |
 | Almoxarifado e Administrativo, separados tecnicamente | D |
-| Fundação, identidade comum, autenticação, configuração raiz, dependências, CI e implantação | D |
+| Configuração raiz, dependências, CI, implantação e demais serviços de Fundação | D |
 | Catálogo e artefatos comuns de contratos de integração | B, com concordância do provedor afetado |
 
-Pessoa/conta institucional pertence à fundação; A mantém aluno/professor e seus vínculos com pessoaId. Não criar uma segunda identidade para solucionar integração.
+Por decisão explícita de Dan nesta conversa, registrada em 13/11/2026, A implementa Pessoa/conta institucional e acesso do Acadêmico, além de aluno/professor e seus vínculos com pessoaId. Não criar uma segunda identidade. O consumo por outros módulos exige contrato acordado com os responsáveis.
 
 O mapa acima é lógico. D deve publicar os caminhos reais na decisão de estrutura antes de trabalho paralelo. A localização de migrações em uma pasta comum não autoriza modificar migrações alheias.
 

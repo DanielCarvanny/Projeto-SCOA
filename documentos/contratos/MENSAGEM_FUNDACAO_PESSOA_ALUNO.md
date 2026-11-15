@@ -17,4 +17,4 @@ Após a disponibilização, o Acadêmico conecta os adaptadores e valida o fluxo
 
 Por decisão de Dan em 11/11/2026, a integração permanece pendente com vocês. Não alteramos a Fundação nem criamos identidade institucional paralela. Podem responder de forma assíncrona com contratos/caminhos disponíveis e previsão de entrega.
 
-Referência: ACA-01 depende de BAS-02. Detalhamento local: `documentos/CONTRATO_ACADEMICO_FUNDACAO_PROPOSTA.md`.
+Referência: ACA-01 depende de BAS-02. Detalhamento local: `documentos/contratos/CONTRATO_ACADEMICO_FUNDACAO_PROPOSTA.md`.

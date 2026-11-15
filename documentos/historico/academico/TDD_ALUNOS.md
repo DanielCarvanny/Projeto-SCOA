@@ -1,3 +1,5 @@
+> Documento histórico: registra o estado da época. Para orientação atual, consulte o índice em documentos/README.md.
+
 # ACA-01 — primeiro ciclo TDD de Alunos
 
 Responsável: Dan, módulo Acadêmico. Data: 10/11/2026. Estado: fatia de aplicação implementada; ACA-01 ainda incompleto. Professores está fora desta fatia.
