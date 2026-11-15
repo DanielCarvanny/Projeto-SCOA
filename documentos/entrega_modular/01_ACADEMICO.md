@@ -1,16 +1,20 @@
+> Atualização de responsabilidade — 13/11/2026: por determinação explícita de Dan nesta conversa, Pessoa, conta, login, sessão e permissões do Acadêmico são implementados por A. A atribuição anterior dessa identidade a D e a espera pela Fundação estão superadas para este escopo. D mantém as demais responsabilidades de infraestrutura; contratos consumidos por outros módulos continuam sujeitos ao acordo com seus responsáveis. Não há alteração de pontos nem aceite automático do incremento.
+
 # Pacote 01_ACADEMICO — Integrante A
 
-Responsável nominal: a preencher. Prazo final: 30/11/2026.
+Responsável nominal: Dan (A). Prazo final: 30/11/2026.
 
 Pessoa, aluno, professor, currículo, matrícula, inscrição e resultados acadêmicos. Consumir impedimentos financeiros e bibliotecários sem acessar diretamente as tabelas desses módulos.
 
 16 incrementos; 74 SP de referência. Pontos incluem interface, aplicação, persistência e testes locais. Não equivalem a horas nem asseguram cabimento no prazo. Todos os RF listados permanecem no escopo; P0/P1/P2 do arquivo anterior passam a indicar apenas ordem de construção.
 
-Leia primeiro GOVERNANCA.md. As dependências identificam interfaces/dados necessários; usar implementações simuladas locais até o provedor estar disponível e depois executar obrigatoriamente os testes reais.
+Leia primeiro AGENTS.md na raiz e documentos/entrega_modular/GOVERNANCA.md. Consulte documentos/planejamento/PLANO_TESTES_ENTREGA.md para QA/REL. As dependências identificam interfaces/dados necessários; usar implementações simuladas locais até o provedor estar disponível e depois executar obrigatoriamente os testes reais.
 
 ## [ACA-01][3 SP] Alunos e professores
 
-- Referência: ACA-01,02. Ordem: P0. Dependências: BAS-02.
+Atualização técnica em 13/11/2026: implementados cadastro de vínculos para Pessoa existente, busca de Professor por CPF, ficha completa e pré-requisitos da conta. 153 testes unitários e 37 de integração aprovados. Aguardam homologação humana; uma conta antiga de Professor sem vínculo foi identificada para regularização. Sem alteração de pontos/aceite. Roteiro: ../academico/ENTREGA_PESSOA_VINCULOS_CONTA.md.
+
+- Referência: ACA-01,02. Ordem: P0. Dependências: identidade BAS-02 incorporada ao trabalho de A; implementação disponível para revisão, sem aceite final. Veja ../academico/IDENTIDADE_ACADEMICA.md.
 - Resultado e aceite: Cadastrar/editar/consultar; identidade duplicada recusada.
 - Entrega: caso de uso, persistência/migração, interface utilizável, validações e autorização aplicáveis; dados de demonstração.
 - Testes: caminho válido, entrada inválida, acesso indevido e reexecução quando houver escrita; acrescentar cenários específicos do aceite.
@@ -36,6 +40,8 @@ Leia primeiro GOVERNANCA.md. As dependências identificam interfaces/dados neces
 - Subtarefas para agentes: (1) conferir contrato/modelo; (2) implementar caso de uso e persistência; (3) integrar interface; (4) testar e revisar. O integrante integra e aceita o resultado.
 
 ## [ACA-04][5 SP] Matrícula e inscrição em turma
+
+Nota de implementação aprovada em 11/11/2026: incluir consulta por número de MatriculaCurso, apresentando aluno e curso; contemplar alunos sem matrícula e com múltiplos vínculos. Não renomear idAluno como matrícula. Esta nota não altera pontos, prazo ou status de aceite.
 
 - Referência: ACA-18,19. Ordem: P0. Dependências: ACA-03,05.
 - Resultado e aceite: Distinguir vínculo e inscrição; recusar duplicidade, pré-requisito, conflito e falta de vaga, inclusive concorrente.
@@ -127,7 +133,7 @@ Leia primeiro GOVERNANCA.md. As dependências identificam interfaces/dados neces
 
 ## [ACA-13][5 SP] Avaliação institucional e manifestações
 
-- Referência: ACA-07,26. Ordem: P2. Dependências: BAS-02.
+- Referência: ACA-07,26. Ordem: P2. Dependências: identidade BAS-02 incorporada ao trabalho de A; implementação disponível para revisão, sem aceite final. Veja ../academico/IDENTIDADE_ACADEMICA.md.
 - Resultado e aceite: Respostas e manifestações registradas; consulta limitada ao responsável; política de participação definida.
 - Entrega: caso de uso, persistência/migração, interface utilizável, validações e autorização aplicáveis; dados de demonstração.
 - Testes: caminho válido, entrada inválida, acesso indevido e reexecução quando houver escrita; acrescentar cenários específicos do aceite.

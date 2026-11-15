@@ -1,0 +1,52 @@
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------------< br.edu.scoa:scoa >--------------------------
+[INFO] Building scoa 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ scoa ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO]
+[INFO] --- compiler:3.14.1:compile (default-compile) @ scoa ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ scoa ---
+[INFO] skip non existing resourceDirectory C:\Users\Dan\SCOA\src\test\resources
+[INFO]
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ scoa ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.5.4:test (default-test) @ scoa ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.106 s -- in br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Running br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s -- in br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.CadastroAlunoPorCpfTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s -- in br.edu.scoa.academico.apresentacao.alunos.CadastroAlunoPorCpfTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.ControladorAlunosTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in br.edu.scoa.academico.apresentacao.alunos.ControladorAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.FluxoAlunosTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.111 s -- in br.edu.scoa.academico.apresentacao.alunos.FluxoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.PainelAlunosTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.723 s -- in br.edu.scoa.academico.apresentacao.alunos.PainelAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.PainelCadastroCpfTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.931 s -- in br.edu.scoa.academico.apresentacao.alunos.PainelCadastroCpfTest
+[INFO] Running br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 76, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.397 s
+[INFO] Finished at: 2026-11-10T22:17:59-03:00
+[INFO] ------------------------------------------------------------------------

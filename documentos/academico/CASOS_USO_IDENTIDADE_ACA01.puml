@@ -1,0 +1,42 @@
+@startuml
+left to right direction
+actor "Usuário autenticado" as U
+actor Coordenador as C
+actor Aluno as A
+actor Professor as P
+C --|> U
+A --|> U
+P --|> U
+actor "Pessoa com conta" as E
+rectangle "SCOA — Acadêmico / identidade" {
+  usecase "Entrar no sistema" as Login
+  usecase "Sair do sistema" as Logout
+  usecase "Consultar e editar\npróprio contato" as Contato
+  usecase "Manter Pessoas" as Pessoas
+  usecase "Manter contas e\natribuir perfil/situação" as Contas
+  usecase "Manter Alunos" as Alunos
+  usecase "Manter Professores" as Professores
+}
+E -- Login
+U -- Logout
+U -- Contato
+C -- Pessoas
+C -- Contas
+C -- Alunos
+C -- Professores
+note bottom of Login
+Login não inclui cadastro.
+Conta preexistente é pré-condição.
+end note
+note bottom of Contas
+Pessoa completa e sessão de Coordenador são pré-condições.
+Perfil Aluno/Professor exige vínculo correspondente completo.
+Coordenador possui autorização administrativa própria.
+Matrícula pertence a MatriculaCurso (ACA-04).
+Manter Alunos/Professores exige Pessoa previamente cadastrada.
+end note
+note bottom of Contato
+Aluno/Professor alteram apenas próprio e-mail/telefone.
+Nome/CPF e privilégios não são autogerenciáveis.
+end note
+@enduml

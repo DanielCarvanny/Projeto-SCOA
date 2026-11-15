@@ -1,0 +1,7 @@
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 s -- in br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[ERROR] Tests run: 12, Failures: 10, Errors: 2, Skipped: 0, Time elapsed: 0.070 s <<< FAILURE! -- in br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[ERROR] Tests run: 27, Failures: 10, Errors: 2, Skipped: 0
+[INFO] BUILD FAILURE
+[INFO] Total time:  2.183 s
+[INFO] Finished at: 2026-11-10T09:48:14-03:00

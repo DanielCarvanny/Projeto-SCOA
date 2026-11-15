@@ -1,0 +1,138 @@
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------------< br.edu.scoa:scoa >--------------------------
+[INFO] Building scoa 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ scoa ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO]
+[INFO] --- compiler:3.14.1:compile (default-compile) @ scoa ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ scoa ---
+[INFO] Copying 2 resources from src\test\resources to target\test-classes
+[INFO]
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ scoa ---
+[INFO] Recompiling the module because of added or removed source files.
+[INFO] Compiling 22 source files with javac [debug release 21] to target\test-classes
+[INFO]
+[INFO] --- surefire:3.5.4:test (default-test) @ scoa ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.084 s -- in br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Running br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.041 s -- in br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.CadastroAlunoPorCpfTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in br.edu.scoa.academico.apresentacao.alunos.CadastroAlunoPorCpfTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.ControladorAlunosTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in br.edu.scoa.academico.apresentacao.alunos.ControladorAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.DadosDemonstracaoAlunosTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in br.edu.scoa.academico.apresentacao.alunos.DadosDemonstracaoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.FluxoAlunosTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.327 s -- in br.edu.scoa.academico.apresentacao.alunos.FluxoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.FluxoFichaAlunoTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.099 s -- in br.edu.scoa.academico.apresentacao.alunos.FluxoFichaAlunoTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.FluxoProfessoresTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.263 s -- in br.edu.scoa.academico.apresentacao.alunos.FluxoProfessoresTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.GestaoFichaAlunoTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in br.edu.scoa.academico.apresentacao.alunos.GestaoFichaAlunoTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in br.edu.scoa.academico.apresentacao.alunos.GestaoProfessoresTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.PainelAlunosTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.797 s -- in br.edu.scoa.academico.apresentacao.alunos.PainelAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.PainelCadastroCpfTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.008 s -- in br.edu.scoa.academico.apresentacao.alunos.PainelCadastroCpfTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.RegressaoUxTest
+[ERROR] Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.173 s <<< FAILURE! -- in br.edu.scoa.academico.apresentacao.alunos.RegressaoUxTest
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.RegressaoUxTest.textoArbitrarioNaoEhTitulacao -- Time elapsed: 0.005 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected br.edu.scoa.academico.aplicacao.professores.FalhaProfessor to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at br.edu.scoa.academico.apresentacao.alunos.RegressaoUxTest.textoArbitrarioNaoEhTitulacao(RegressaoUxTest.java:32)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.RegressaoUxTest.cadastroDeAlunoComecaComEscolhaSemCampoCpf -- Time elapsed: 0.080 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: not <null>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertNotNull.failNull(AssertNotNull.java:49)
+	at org.junit.jupiter.api.AssertNotNull.assertNotNull(AssertNotNull.java:35)
+	at org.junit.jupiter.api.AssertNotNull.assertNotNull(AssertNotNull.java:30)
+	at org.junit.jupiter.api.Assertions.assertNotNull(Assertions.java:304)
+	at br.edu.scoa.academico.apresentacao.alunos.RegressaoUxTest.lambda$cadastroDeAlunoComecaComEscolhaSemCampoCpf$0(RegressaoUxTest.java:16)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:308)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+[ERROR] br.edu.scoa.academico.apresentacao.alunos.RegressaoUxTest.cadastroDeProfessorComecaComEscolha -- Time elapsed: 0.084 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: not <null>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertNotNull.failNull(AssertNotNull.java:49)
+	at org.junit.jupiter.api.AssertNotNull.assertNotNull(AssertNotNull.java:35)
+	at org.junit.jupiter.api.AssertNotNull.assertNotNull(AssertNotNull.java:30)
+	at org.junit.jupiter.api.Assertions.assertNotNull(Assertions.java:304)
+	at br.edu.scoa.academico.apresentacao.alunos.RegressaoUxTest.lambda$cadastroDeProfessorComecaComEscolha$1(RegressaoUxTest.java:26)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:308)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+
+[INFO] Running br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[INFO]
+[INFO] Results:
+[INFO]
+[ERROR] Failures:
+[ERROR]   RegressaoUxTest.lambda$cadastroDeAlunoComecaComEscolhaSemCampoCpf$0:16 expected: not <null>
+[ERROR]   RegressaoUxTest.lambda$cadastroDeProfessorComecaComEscolha$1:26 expected: not <null>
+[ERROR]   RegressaoUxTest.textoArbitrarioNaoEhTitulacao:32 Expected br.edu.scoa.academico.aplicacao.professores.FalhaProfessor to be thrown, but nothing was thrown.
+[INFO]
+[ERROR] Tests run: 113, Failures: 3, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  16.086 s
+[INFO] Finished at: 2026-11-11T15:51:16-03:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.4:test (default-test) on project scoa: There are test failures.
+[ERROR]
+[ERROR] See C:\Users\Dan\SCOA\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

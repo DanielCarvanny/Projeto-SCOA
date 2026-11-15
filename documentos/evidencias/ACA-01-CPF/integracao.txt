@@ -1,0 +1,91 @@
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------------< br.edu.scoa:scoa >--------------------------
+[INFO] Building scoa 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ scoa ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO]
+[INFO] --- compiler:3.14.1:compile (default-compile) @ scoa ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ scoa ---
+[INFO] skip non existing resourceDirectory C:\Users\Dan\SCOA\src\test\resources
+[INFO]
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ scoa ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.5.4:test (default-test) @ scoa ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s -- in br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+[INFO] Running br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.046 s -- in br.edu.scoa.academico.aplicacao.alunos.GestaoAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.CadastroAlunoPorCpfTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.022 s -- in br.edu.scoa.academico.apresentacao.alunos.CadastroAlunoPorCpfTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.ControladorAlunosTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in br.edu.scoa.academico.apresentacao.alunos.ControladorAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.PainelAlunosTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.938 s -- in br.edu.scoa.academico.apresentacao.alunos.PainelAlunosTest
+[INFO] Running br.edu.scoa.academico.apresentacao.alunos.PainelCadastroCpfTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.946 s -- in br.edu.scoa.academico.apresentacao.alunos.PainelCadastroCpfTest
+[INFO] Running br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in br.edu.scoa.academico.infraestrutura.persistencia.ConfiguracaoBancoTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 67, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jar:3.4.1:jar (default-jar) @ scoa ---
+[INFO] Building jar: C:\Users\Dan\SCOA\target\scoa-0.1.0-SNAPSHOT.jar
+[INFO]
+[INFO] --- failsafe:3.5.4:integration-test (default) @ scoa ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running br.edu.scoa.academico.infraestrutura.persistencia.RepositorioAlunosMysqlIT
+nov. 10, 2026 5:39:48 PM org.flywaydb.core.FlywayExecutor execute
+INFORMA��ES: Database: jdbc:mysql://127.0.0.1:3308/scoa_test (MySQL 8.4)
+nov. 10, 2026 5:39:48 PM org.flywaydb.core.internal.database.base.Database recommendFlywayUpgrade
+ADVERT�NCIA: Using MySQL 8.4 which is newer than the version Flyway has been verified with. The latest verified version of MySQL is 8.1.
+nov. 10, 2026 5:39:48 PM org.flywaydb.core.internal.database.base.Database recommendFlywayUpgrade
+ADVERT�NCIA: Using MySQL 8.4 which is newer than the version Flyway has been verified with. The latest verified version of MySQL is 8.1.
+nov. 10, 2026 5:39:48 PM org.flywaydb.core.internal.command.DbValidate validate
+INFORMA��ES: Successfully validated 2 migrations (execution time 00:00.007s)
+nov. 10, 2026 5:39:48 PM org.flywaydb.core.internal.command.DbMigrate migrateGroup
+INFORMA��ES: Current version of schema `scoa_test`: 001
+nov. 10, 2026 5:39:48 PM org.flywaydb.core.internal.command.DbMigrate logSummary
+INFORMA��ES: Schema `scoa_test` is up to date. No migration necessary.
+nov. 10, 2026 5:39:48 PM org.flywaydb.core.FlywayExecutor execute
+INFORMA��ES: Database: jdbc:mysql://127.0.0.1:3308/scoa_test (MySQL 8.4)
+nov. 10, 2026 5:39:48 PM org.flywaydb.core.internal.database.base.Database recommendFlywayUpgrade
+ADVERT�NCIA: Using MySQL 8.4 which is newer than the version Flyway has been verified with. The latest verified version of MySQL is 8.1.
+nov. 10, 2026 5:39:48 PM org.flywaydb.core.internal.command.DbValidate validate
+INFORMA��ES: Successfully validated 2 migrations (execution time 00:00.007s)
+nov. 10, 2026 5:39:48 PM org.flywaydb.core.internal.command.DbMigrate migrateGroup
+INFORMA��ES: Current version of schema `scoa_test`: 001
+nov. 10, 2026 5:39:48 PM org.flywaydb.core.internal.command.DbMigrate logSummary
+INFORMA��ES: Schema `scoa_test` is up to date. No migration necessary.
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.495 s -- in br.edu.scoa.academico.infraestrutura.persistencia.RepositorioAlunosMysqlIT
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- failsafe:3.5.4:verify (default) @ scoa ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.838 s
+[INFO] Finished at: 2026-11-10T17:39:49-03:00
+[INFO] ------------------------------------------------------------------------

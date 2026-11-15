@@ -1,0 +1,38 @@
+[ERROR] Tests run: 12, Failures: 9, Errors: 3, Skipped: 0, Time elapsed: 0.093 s <<< FAILURE! -- in br.edu.scoa.academico.aplicacao.alunos.CadastrarAlunoTest
+java.lang.UnsupportedOperationException: Ciclo RED: comportamento ainda n�o implementado
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+Caused by: java.lang.UnsupportedOperationException: Ciclo RED: comportamento ainda n�o implementado
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+Caused by: java.lang.UnsupportedOperationException: Ciclo RED: comportamento ainda n�o implementado
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalStateException> but was: <java.lang.UnsupportedOperationException>
+Caused by: java.lang.UnsupportedOperationException: Ciclo RED: comportamento ainda n�o implementado
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+Caused by: java.lang.UnsupportedOperationException: Ciclo RED: comportamento ainda n�o implementado
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalStateException> but was: <java.lang.UnsupportedOperationException>
+Caused by: java.lang.UnsupportedOperationException: Ciclo RED: comportamento ainda n�o implementado
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+Caused by: java.lang.UnsupportedOperationException: Ciclo RED: comportamento ainda n�o implementado
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+Caused by: java.lang.UnsupportedOperationException: Ciclo RED: comportamento ainda n�o implementado
+java.lang.UnsupportedOperationException: Ciclo RED: comportamento ainda n�o implementado
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+Caused by: java.lang.UnsupportedOperationException: Ciclo RED: comportamento ainda n�o implementado
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+Caused by: java.lang.UnsupportedOperationException: Ciclo RED: comportamento ainda n�o implementado
+java.lang.UnsupportedOperationException: Ciclo RED: comportamento ainda n�o implementado
+[ERROR]   CadastrarAlunoTest.exigeSituacaoExplicitaSemInventarValorPadrao:57->assertErro:74 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   CadastrarAlunoTest.falhaDeIdentidadeNaoAutorizaGravacao:62 Unexpected exception type thrown, expected: <java.lang.IllegalStateException> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   CadastrarAlunoTest.falhaDePersistenciaNaoRetornaSucesso:70 Unexpected exception type thrown, expected: <java.lang.IllegalStateException> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   CadastrarAlunoTest.impedeCadastroSemPermissaoAntesDeConsultarPessoa:37->assertErro:74 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   CadastrarAlunoTest.recusaPessoaIdInvalido:48->assertErro:74 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   CadastrarAlunoTest.recusaPessoaIdInvalido:48->assertErro:74 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   CadastrarAlunoTest.recusaPessoaInexistenteSemGravar:43->assertErro:74 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   CadastrarAlunoTest.recusaUsuarioIdInvalido:53->assertErro:74 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   CadastrarAlunoTest.recusaUsuarioIdInvalido:53->assertErro:74 Unexpected exception type thrown, expected: <br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException> but was: <java.lang.UnsupportedOperationException>
+[ERROR]   CadastrarAlunoTest.cadastraAlunoPreservandoPessoaSituacaoEAutor:19 � UnsupportedOperation Ciclo RED: comportamento ainda n�o implementado
+[ERROR]   CadastrarAlunoTest.preservaSituacaoInativaInformada:28 � UnsupportedOperation Ciclo RED: comportamento ainda n�o implementado
+[ERROR]   CadastrarAlunoTest.recusaDuplicidadeSemAlterarCadastroAnterior:31 � UnsupportedOperation Ciclo RED: comportamento ainda n�o implementado
+[ERROR] Tests run: 12, Failures: 9, Errors: 3, Skipped: 0
+[INFO] BUILD FAILURE
+[INFO] Total time:  10.715 s
+[INFO] Finished at: 2026-11-10T09:14:09-03:00
