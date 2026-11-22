@@ -1,0 +1,42 @@
+CREATE TABLE periodo_letivo (
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    descricao TEXT NOT NULL,
+    data_inicio DATE NOT NULL,
+    data_fim DATE NOT NULL,
+    inicio_matricula DATETIME(6) NOT NULL,
+    fim_matricula DATETIME(6) NOT NULL,
+    inicio_inscricao DATETIME(6) NOT NULL,
+    fim_inscricao DATETIME(6) NOT NULL,
+    situacao VARCHAR(40) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    versao_registro BIGINT NOT NULL,
+    operacao_criacao CHAR(36) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    UNIQUE KEY uk_periodo_criacao (operacao_criacao),
+    INDEX ix_periodo_situacao_inicio (situacao,data_inicio),
+    CHECK (situacao IN ('PLANEJADO','ABERTO','ENCERRADO')),
+    CHECK (data_fim >= data_inicio),
+    CHECK (fim_matricula >= inicio_matricula),
+    CHECK (fim_inscricao >= inicio_inscricao),
+    CHECK (versao_registro > 0)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE periodo_historico (
+    periodo_id BIGINT NOT NULL,
+    revisao BIGINT NOT NULL,
+    descricao TEXT NOT NULL,
+    data_inicio DATE NOT NULL,
+    data_fim DATE NOT NULL,
+    inicio_matricula DATETIME(6) NOT NULL,
+    fim_matricula DATETIME(6) NOT NULL,
+    inicio_inscricao DATETIME(6) NOT NULL,
+    fim_inscricao DATETIME(6) NOT NULL,
+    situacao VARCHAR(40) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    evento VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    autor_id BIGINT NOT NULL,
+    instante DATETIME(6) NOT NULL,
+    origem VARCHAR(40) NOT NULL,
+    operacao_id CHAR(36) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    PRIMARY KEY (periodo_id,revisao),
+    UNIQUE KEY uk_periodo_operacao (operacao_id),
+    FOREIGN KEY (periodo_id) REFERENCES periodo_letivo(id) ON DELETE RESTRICT,
+    CHECK (evento IN ('CADASTRO','EDICAO','ABERTURA','ENCERRAMENTO'))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
