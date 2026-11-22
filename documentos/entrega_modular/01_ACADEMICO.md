@@ -23,6 +23,14 @@ Atualização técnica em 13/11/2026: implementados cadastro de vínculos para P
 
 ## [ACA-02][5 SP] Cursos, disciplinas, matriz e período
 
+Fechamento técnico — 22/11/2026: ACA-02 está concluído tecnicamente, sem etapa de homologação manual por decisão de Dan. Curso, Disciplina, Matriz, Componentes, Pré-requisitos, Publicação/Cópia de versões e Período Letivo foram integrados, documentados e validados por testes automatizados. A referência de execução, evidências e limitações está no [roteiro de Períodos e conferência do ACA-02](../academico/ACA02_PERIODOS_HOMOLOGACAO.md). Refinamentos de UX continuam no backlog próprio e não bloqueiam a entrega. RF-22 continua dependendo do plano individual em incremento posterior. Esta atualização não altera os 5 SP.
+
+Atualização de pré-requisitos em 16/11/2026: implementadas configuração em matriz em elaboração, validação de ciclos, proteção de componentes e auditoria V005. Validação final: 190 testes unitários/de interface e 66 de integração MySQL aprovados. [Roteiro de homologação](../academico/ACA02_PRE_REQUISITOS_HOMOLOGACAO.md). Publicação/cópia de versões, períodos e refinamentos de UX continuam pendentes. Sem alteração de pontos ou aceite final.
+
+Refinamentos registrados em 16/11/2026 para implementação futura: calendário sincronizado com digitação, análise da versão curricular, clareza do fluxo de salvar e comparação explícita de revisões de disciplina. Ver [avaliação e critérios de UX](../academico/ACA02_REFINAMENTOS_UX.md). O significado institucional da versão permanece pendente; nenhuma nova restrição foi aplicada.
+
+Atualização técnica em 16/11/2026: Curso/Disciplina e matriz em elaboração com componentes implementados para homologação. Migrações V003/V004, composição nunca vazia, revisão histórica da disciplina e concorrência verificadas. Suíte de 15/11: 181 testes unitários/de interface e 53 de integração aprovados. Pré-requisitos, publicação/cópia de versões e períodos continuam pendentes. Sem alteração de pontos ou aceite final. Roteiro: [Matrizes e componentes](../academico/ACA02_MATRIZES_HOMOLOGACAO.md).
+
 - Referência: ACA-04,22,30. Ordem: P0. Dependências: BAS-01.
 - Resultado e aceite: Matriz versionada; período com datas válidas; pré-requisitos sem ciclos.
 - Entrega: caso de uso, persistência/migração, interface utilizável, validações e autorização aplicáveis; dados de demonstração.

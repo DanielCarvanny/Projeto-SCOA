@@ -49,6 +49,12 @@ Este índice explica o papel de cada documento. Os registros históricos e evid�
 | [FECHAMENTO_ACA01.md](academico/FECHAMENTO_ACA01.md) | Checklist de conclusão, revisão do diagrama/UC01/UC07, entregas de B/D e homologação integrada pendente |
 | [ENTREGA_UX_CADASTROS.md](academico/ENTREGA_UX_CADASTROS.md) | Roteiro atual: escolha de cadastro, CPF, dados compartilhados, títulos e resultados dos testes |
 | [ENTREGA_PROFESSORES.md](academico/ENTREGA_PROFESSORES.md) | Cadastro, consulta, edição, migração e testes de Professores; como abrir as abas da demonstração |
+| [ACA02_HOMOLOGACAO.md](academico/ACA02_HOMOLOGACAO.md) | Curso e Disciplina: novidades, comandos, demonstração em memória e 17 verificações manuais |
+| [ACA02_MATRIZES_HOMOLOGACAO.md](academico/ACA02_MATRIZES_HOMOLOGACAO.md) | Matriz em elaboração, manutenção de componentes, revisão histórica e roteiro de homologação |
+| [Evidências de matrizes](evidencias/aca02-matrizes/RESULTADO.md) | Resultado dos 181 testes unitários/de interface e 53 testes de integração |
+| [ACA02_REFINAMENTOS_UX.md](academico/ACA02_REFINAMENTOS_UX.md) | Observações da homologação: datas, versão curricular, salvar e atualização de conteúdo; planejamento futuro |
+| [ACA02_PRE_REQUISITOS_HOMOLOGACAO.md](academico/ACA02_PRE_REQUISITOS_HOMOLOGACAO.md) | Configuração de pré-requisitos, proteção contra ciclos e roteiro de homologação |
+| [ACA02_ARQUITETURA.md](academico/ACA02_ARQUITETURA.md) | Avaliação dos diagramas, decisões aprovadas e fronteira entre catálogo entregue e matriz/período pendentes |
 | [Seed MySQL](../src/test/resources/db/academico/README.md) | Instruções dos exemplos SQL; a carga pertence aos recursos de teste, fora desta pasta |
 
 O guia pessoal `Guias/GUIA_LOCAL_ACESSO_MYSQL.md`, quando presente nesta máquina, contém instruções locais e credenciais. Está excluído pelo Git local e não deve ser adicionado com `git add -f`.
@@ -78,3 +84,7 @@ Ao criar documentos, coloque-os na pasta correspondente, atualize este índice e
 
 
 Revisão para versionamento: [pacote ACA-01 — 15/11/2026](academico/REVISAO_PACOTE_ACA01.md).
+
+Publicação e nova versão de matrizes: [roteiro ACA-02](academico/ACA02_PUBLICACAO_HOMOLOGACAO.md).
+
+Períodos letivos e conferência de fechamento: [roteiro ACA-02](academico/ACA02_PERIODOS_HOMOLOGACAO.md).
