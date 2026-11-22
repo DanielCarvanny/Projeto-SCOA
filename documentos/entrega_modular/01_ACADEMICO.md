@@ -40,6 +40,8 @@ Atualização técnica em 16/11/2026: Curso/Disciplina e matriz em elaboração 
 
 ## [ACA-03][5 SP] Turmas, salas e alocação
 
+Planejamento técnico iniciado em 22/11/2026 após o fechamento técnico do ACA-02. Referência de requisitos, limites e decisões pendentes: [arquitetura ACA-03](../academico/ACA03_ARQUITETURA.md). Nenhuma regra pendente foi implementada por essa documentação; o incremento ainda não está em execução de código.
+
 - Referência: ACA-03,05,20. Ordem: P0. Dependências: ACA-01,02.
 - Resultado e aceite: Professor, disciplina e período vinculados; capacidade e conflitos de sala/professor validados.
 - Entrega: caso de uso, persistência/migração, interface utilizável, validações e autorização aplicáveis; dados de demonstração.
