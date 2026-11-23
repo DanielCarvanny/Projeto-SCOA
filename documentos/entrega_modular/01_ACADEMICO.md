@@ -40,7 +40,7 @@ Atualização técnica em 16/11/2026: Curso/Disciplina e matriz em elaboração 
 
 ## [ACA-03][5 SP] Turmas, salas e alocação
 
-Planejamento técnico iniciado em 22/11/2026 após o fechamento técnico do ACA-02. Referência de requisitos, limites e decisões pendentes: [arquitetura ACA-03](../academico/ACA03_ARQUITETURA.md). Nenhuma regra pendente foi implementada por essa documentação; o incremento ainda não está em execução de código.
+Conclusão técnica em 22/11/2026: Entidades de Sala, Turma e Horário, caso de uso GestaoTurmas, migrações V008 e V009, persistência MySQL com validação transacional de conflitos de horário de sala/professor e auditoria, interface Swing com fluxo guiado (cadastro, consulta, ficha, edição, transições e alocação) e demonstração em memória implementadas e validadas por testes automatizados (unitários, EDT e integração MySQL). Roteiro: [Homologação ACA-03](../academico/ACA03_HOMOLOGACAO.md) e [Arquitetura ACA-03](../academico/ACA03_ARQUITETURA.md). Esta atualização não altera os 5 SP.
 
 - Referência: ACA-03,05,20. Ordem: P0. Dependências: ACA-01,02.
 - Resultado e aceite: Professor, disciplina e período vinculados; capacidade e conflitos de sala/professor validados.

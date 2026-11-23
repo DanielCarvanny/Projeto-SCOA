@@ -28,7 +28,7 @@ class CatalogoMysqlIT {
         if (banco == null) return;
         try (var conexao = banco.abrir(); var comando = conexao.createStatement()) {
             comando.execute("DROP TRIGGER IF EXISTS teste_catalogo_historico");
-            for (String tabela : new String[]{"disciplina_historico", "curso_historico", "disciplina", "curso"})
+            for (String tabela : new String[]{"horario_turma", "turma_auditoria", "turma", "disciplina_historico", "curso_historico", "disciplina", "curso"})
                 comando.executeUpdate("DELETE FROM " + tabela);
         }
     }

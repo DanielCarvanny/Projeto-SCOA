@@ -1,0 +1,5 @@
+CREATE TABLE sala_auditoria (
+ id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY, sala_id BIGINT NOT NULL, evento VARCHAR(20) NOT NULL, autor_id BIGINT NOT NULL,
+ instante DATETIME(6) NOT NULL, operacao_id CHAR(36) NOT NULL, UNIQUE KEY uk_sala_auditoria_operacao(operacao_id),
+ FOREIGN KEY(sala_id) REFERENCES sala(id) ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -15,7 +15,7 @@ public final class PainelIdentidade extends JPanel {
     private final DialogosAluno dialogos;
     private final BiFunction<Sessao,Boolean,JComponent> abrirAcademico;
     private final BiFunction<Sessao,br.edu.scoa.academico.aplicacao.curriculo.TipoCatalogo,JComponent> abrirCatalogo;
-    private final Function<Sessao,JComponent> abrirMatrizes,abrirPeriodos;
+    private final Function<Sessao,JComponent> abrirMatrizes,abrirPeriodos,abrirTurmas;
     private final CardLayout navegacao=new CardLayout();
     private final JPanel paginas=new JPanel(navegacao);
     private final JLabel estado=new JLabel("Pronto."), resumoConta=new JLabel();
@@ -47,7 +47,12 @@ public final class PainelIdentidade extends JPanel {
     public PainelIdentidade(ServicoIdentidade servico,DialogosAluno dialogos,BiFunction<Sessao,Boolean,JComponent> abrirAcademico,
             BiFunction<Sessao,br.edu.scoa.academico.aplicacao.curriculo.TipoCatalogo,JComponent> abrirCatalogo,
             Function<Sessao,JComponent> abrirMatrizes,Function<Sessao,JComponent> abrirPeriodos){
-        this.servico=servico;this.dialogos=dialogos;this.abrirAcademico=abrirAcademico;this.abrirCatalogo=abrirCatalogo;this.abrirMatrizes=abrirMatrizes;this.abrirPeriodos=abrirPeriodos;
+        this(servico,dialogos,abrirAcademico,abrirCatalogo,abrirMatrizes,abrirPeriodos,null);
+    }
+    public PainelIdentidade(ServicoIdentidade servico,DialogosAluno dialogos,BiFunction<Sessao,Boolean,JComponent> abrirAcademico,
+            BiFunction<Sessao,br.edu.scoa.academico.aplicacao.curriculo.TipoCatalogo,JComponent> abrirCatalogo,
+            Function<Sessao,JComponent> abrirMatrizes,Function<Sessao,JComponent> abrirPeriodos,Function<Sessao,JComponent> abrirTurmas){
+        this.servico=servico;this.dialogos=dialogos;this.abrirAcademico=abrirAcademico;this.abrirCatalogo=abrirCatalogo;this.abrirMatrizes=abrirMatrizes;this.abrirPeriodos=abrirPeriodos;this.abrirTurmas=abrirTurmas;
         setLayout(new BorderLayout(10,10));setBorder(BorderFactory.createEmptyBorder(18,20,18,20));
         add(new JLabel("SCOA · Acadêmico · dados persistidos no MySQL"),BorderLayout.NORTH);add(paginas,BorderLayout.CENTER);estado.setName("estado");add(estado,BorderLayout.SOUTH);
         expiracao=new Timer(30*60*1000,e->encerrar());expiracao.setRepeats(false);
@@ -107,6 +112,7 @@ public final class PainelIdentidade extends JPanel {
                 botao(menu,"alunos","Alunos",()->abrirVinculo(true));botao(menu,"professores","Professores",()->abrirVinculo(false));
                 if(abrirMatrizes!=null)botao(menu,"matrizes","Matrizes curriculares",this::abrirMatrizes);
                 if(abrirPeriodos!=null)botao(menu,"periodos","Períodos letivos",this::abrirPeriodos);
+                if(abrirTurmas!=null)botao(menu,"turmas","Turmas e salas",this::abrirTurmas);
                 if(abrirCatalogo!=null){
                     botao(menu,"cursos","Cursos",()->abrirCatalogo(br.edu.scoa.academico.aplicacao.curriculo.TipoCatalogo.CURSO));
                     botao(menu,"disciplinas","Disciplinas",()->abrirCatalogo(br.edu.scoa.academico.aplicacao.curriculo.TipoCatalogo.DISCIPLINA));
@@ -143,6 +149,14 @@ public final class PainelIdentidade extends JPanel {
         executar(()->{if(!servico.coordenador(sessao))throw new FalhaIdentidade(FalhaIdentidade.Codigo.NAO_AUTORIZADO);return sessao;},s->{
             for(Component p:paginas.getComponents())if("vinculo".equals(p.getName()))paginas.remove(p);
             var painel=new JPanel(new BorderLayout());painel.setName("vinculo");painel.add(abrirPeriodos.apply(s));
+            var voltar=new JButton("Voltar ao menu acadêmico");voltar.addActionListener(e->abrirMenu());painel.add(voltar,BorderLayout.SOUTH);
+            paginas.add(painel,"vinculo");mostrar("vinculo");
+        });
+    }
+    private void abrirTurmas(){
+        executar(()->{if(!servico.coordenador(sessao))throw new FalhaIdentidade(FalhaIdentidade.Codigo.NAO_AUTORIZADO);return sessao;},s->{
+            for(Component p:paginas.getComponents())if("vinculo".equals(p.getName()))paginas.remove(p);
+            var painel=new JPanel(new BorderLayout());painel.setName("vinculo");painel.add(abrirTurmas.apply(s));
             var voltar=new JButton("Voltar ao menu acadêmico");voltar.addActionListener(e->abrirMenu());painel.add(voltar,BorderLayout.SOUTH);
             paginas.add(painel,"vinculo");mostrar("vinculo");
         });

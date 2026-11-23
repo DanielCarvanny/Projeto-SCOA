@@ -1,6 +1,6 @@
 # ACA-03 — arquitetura de Turmas, Salas e Alocação
 
-Data: 22/11/2026. Responsável: A/Dan — Acadêmico. Status: planejamento técnico; implementação ainda não iniciada.
+Data: 22/11/2026. Responsável: A/Dan — Acadêmico. Status: concluído tecnicamente; pronto para revisão.
 
 ## Escopo confirmado no documento-base
 
@@ -36,15 +36,15 @@ Turmas não criam inscrições automaticamente. Vagas e quantidade de inscritos 
 9. Escritas, verificação de conflito e auditoria precisam ocorrer na mesma transação. A aplicação não pode confiar somente no estado carregado pela tela.
 10. Edição concorrente deve ser recusada por revisão técnica. Repetir uma confirmação não pode gerar outra turma, horário ou auditoria.
 
-## Decisões pendentes para o início da implementação
+## Decisões aplicadas nesta implementação
 
 | Tema | Estado | Proposta técnica, ainda não aplicada |
 |---|---|---|
-| Situação de período para criar/editar turma | Não definido | Permitir somente período PLANEJADO ou ABERTO; impedir ENCERRADO |
-| Situação inicial da turma | Não definido | PLANEJADA, com abertura/encerramento como transições explícitas futuras |
-| Edição e cancelamento de turma com inscrições | Depende do ACA-04 | Bloquear alteração estrutural e exclusão depois da primeira inscrição; registrar cancelamento em vez de excluir |
-| Conflito de professor em períodos distintos | Não definido | Comparar horários somente dentro do mesmo período até existir calendário institucional transversal |
-| Recursos de sala | Sem catálogo de requisitos | Usar texto livre na sala; não validar correspondência automática até o requisito ser definido |
+| Situação de período para criar/editar turma | Aplicada | Permitir período PLANEJADO ou ABERTO; impedir ENCERRADO |
+| Situação inicial da turma | Aplicada | PLANEJADA; transições explícitas ficam para a continuação do ACA-03 |
+| Edição e cancelamento de turma com inscrições | Depende do ACA-04 | Continua pendente; ainda não existem inscrições neste incremento |
+| Conflito de professor em períodos distintos | Aplicada | Comparar horários somente dentro do mesmo período |
+| Recursos de sala | Aplicada | Texto livre informativo; sem inferência automática de requisitos |
 
 Essas propostas serão separadas das regras documentadas. Nenhuma será apresentada como requisito aprovado sem confirmação posterior.
 
@@ -87,3 +87,15 @@ Na criação de turma, disciplina, período e professor serão escolhidos por c�
 6. Criar demonstração sintética, roteiro de homologação e regressão completa.
 
 Não iniciar ACA-04 até as entidades e contratos do ACA-03 estarem persistidos e verificados.
+
+## Conclusão técnica e evidências
+
+Incremento concluído tecnicamente em 22/11/2026. Foram entregues:
+- Entidades de domínio com validações invariantes: `Sala`, `Turma`, `HorarioTurma`, `SituacaoSala`, `SituacaoTurma`, `DiaSemana` e `FalhaTurma`.
+- Caso de uso e serviço de aplicação autorizado para Coordenador: `GestaoTurmas`.
+- Migrações versionadas: `V008__salas_turmas_horarios.sql` e `V009__auditoria_sala.sql`.
+- Persistência real em MySQL com suporte a concorrência otimista, auditoria completa e detecção transacional de sobreposição de horários de professores e salas: `RepositorioTurmasMysql`.
+- Telas completas guiadas por `CardLayout` em Java Swing fora da EDT: `FluxoTurmas` (cadastro, consulta, ficha, edição, alternância de situação, transições de status da turma e alocação/desalocação de sala).
+- Demonstração em memória: `DemonstracaoTurmas`.
+- Suíte completa de testes: testes de domínio (`SalaTest`, `TurmaTest`), testes de aplicação (`GestaoTurmasTest`), testes de interface (`FluxoTurmasTest`) e testes de integração com banco MySQL 8.4 (`RepositorioTurmasMysqlIT`).
+- Roteiro de homologação: [ACA03_HOMOLOGACAO.md](ACA03_HOMOLOGACAO.md).
