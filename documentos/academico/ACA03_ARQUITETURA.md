@@ -1,6 +1,6 @@
 # ACA-03 — arquitetura de Turmas, Salas e Alocação
 
-Data: 22/11/2026. Responsável: A/Dan — Acadêmico. Status: concluído tecnicamente; pronto para revisão.
+Data: 22/11/2026. Responsável: A/Dan — Acadêmico. Status: concluído tecnicamente no commit bb5445f; homologação automatizada aprovada.
 
 ## Escopo confirmado no documento-base
 
