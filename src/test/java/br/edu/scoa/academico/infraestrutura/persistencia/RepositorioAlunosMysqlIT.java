@@ -55,6 +55,11 @@ class RepositorioAlunosMysqlIT {
     @BeforeEach void limparDadosSinteticos() throws Exception {
         try (var c = banco.abrir(); var s = c.createStatement()) {
             s.execute("DROP TRIGGER IF EXISTS teste_falha_auditoria");
+            s.executeUpdate("DELETE FROM horario_turma");
+            s.executeUpdate("DELETE FROM turma_auditoria");
+            s.executeUpdate("DELETE FROM turma");
+            s.executeUpdate("DELETE FROM professor_auditoria");
+            s.executeUpdate("DELETE FROM professor");
             s.executeUpdate("DELETE FROM aluno_auditoria");
             s.executeUpdate("DELETE FROM aluno");
             s.executeUpdate("DELETE FROM pessoa");

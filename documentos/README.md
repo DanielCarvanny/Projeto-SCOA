@@ -88,3 +88,5 @@ Revisão para versionamento: [pacote ACA-01 — 15/11/2026](academico/REVISAO_PA
 Publicação e nova versão de matrizes: [roteiro ACA-02](academico/ACA02_PUBLICACAO_HOMOLOGACAO.md).
 
 Períodos letivos e conferência de fechamento: [roteiro ACA-02](academico/ACA02_PERIODOS_HOMOLOGACAO.md).
+
+Turmas, salas e alocação: [roteiro ACA-03](academico/ACA03_HOMOLOGACAO.md).
