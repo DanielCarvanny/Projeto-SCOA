@@ -1,0 +1,3 @@
+package br.edu.scoa.academico.dominio.matriculas;
+import java.time.LocalDate;
+public record MatriculaCurso(long id,String numeroMatricula,long alunoId,long cursoId,long matrizId,LocalDate dataIngresso,SituacaoMatricula situacao,long revisao){public MatriculaCurso{numeroMatricula=numeroMatricula==null?"":numeroMatricula.strip().toUpperCase();if(id<0||revisao<0||(id==0)!=(revisao==0)||numeroMatricula.isBlank()||numeroMatricula.length()>40||alunoId<=0||cursoId<=0||matrizId<=0||dataIngresso==null||situacao==null)throw new FalhaMatricula(FalhaMatricula.Codigo.MATRICULA_INVALIDA);}public MatriculaCurso identificado(long novoId,long novaRevisao){return new MatriculaCurso(novoId,numeroMatricula,alunoId,cursoId,matrizId,dataIngresso,situacao,novaRevisao);}}

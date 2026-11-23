@@ -1,0 +1,2 @@
+package br.edu.scoa.academico.dominio.matriculas;
+public final class FalhaMatricula extends RuntimeException { public enum Codigo { MATRICULA_INVALIDA, INSCRICAO_INVALIDA, MATRICULA_NAO_ATIVA, TURMA_NAO_ABERTA, DUPLICIDADE, VAGA_INDISPONIVEL, CONFLITO_HORARIO, PRE_REQUISITO_NAO_ATENDIDO, IMPEDIMENTO_ATIVO, INTEGRACAO_INDISPONIVEL, CONFLITO_EDICAO, NAO_ENCONTRADO, OPERACAO_REUTILIZADA } private final Codigo codigo; public FalhaMatricula(Codigo codigo){super(codigo.name());this.codigo=codigo;} public Codigo codigo(){return codigo;} }
