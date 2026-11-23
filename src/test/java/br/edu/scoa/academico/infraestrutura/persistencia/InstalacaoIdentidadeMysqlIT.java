@@ -10,7 +10,7 @@ class InstalacaoIdentidadeMysqlIT {
     @BeforeEach void reconstruir()throws Exception{
         try(var c=banco.abrir();var s=c.createStatement()){
             assertEquals("scoa_test",c.getCatalog());
-            for(String tabela:new String[]{"periodo_historico","periodo_letivo","pre_requisito_historico","pre_requisito","componente_historico","matriz_historico","componente_curricular","matriz_curricular","disciplina_historico","curso_historico","disciplina","curso","professor_auditoria","professor","aluno_auditoria","aluno","identidade_auditoria","usuario","controle_acesso","pessoa","flyway_identidade_schema_history","flyway_academico_schema_history"})s.execute("DROP TABLE IF EXISTS "+tabela);
+            for(String tabela:new String[]{"turma_auditoria","horario_turma","turma","sala_auditoria","sala","periodo_historico","periodo_letivo","pre_requisito_historico","pre_requisito","componente_historico","matriz_historico","componente_curricular","matriz_curricular","disciplina_historico","curso_historico","disciplina","curso","professor_auditoria","professor","aluno_auditoria","aluno","identidade_auditoria","usuario","controle_acesso","pessoa","flyway_identidade_schema_history","flyway_academico_schema_history"})s.execute("DROP TABLE IF EXISTS "+tabela);
         }
     }
     @AfterAll static void deixarEsquemaPronto(){MigracoesIdentidade.executar(banco);var f=MigracoesAcademico.configurar(banco);if(f.info().applied().length==0)MigracoesAplicacao.inicializarHistoricoAcademico(banco);f.migrate();}

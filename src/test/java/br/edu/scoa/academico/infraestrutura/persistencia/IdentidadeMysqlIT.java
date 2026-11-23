@@ -41,6 +41,7 @@ class IdentidadeMysqlIT {
         if(banco==null)return;
         try(var c=banco.abrir();var s=c.createStatement()){
             s.execute("DROP TRIGGER IF EXISTS teste_identidade_auditoria");
+            s.executeUpdate("DELETE FROM horario_turma");s.executeUpdate("DELETE FROM turma_auditoria");s.executeUpdate("DELETE FROM turma");
             s.executeUpdate("DELETE FROM identidade_auditoria");s.executeUpdate("DELETE FROM usuario");
             s.executeUpdate("DELETE FROM professor_auditoria");s.executeUpdate("DELETE FROM professor");
             s.executeUpdate("DELETE FROM aluno_auditoria");s.executeUpdate("DELETE FROM aluno");s.executeUpdate("DELETE FROM pessoa");

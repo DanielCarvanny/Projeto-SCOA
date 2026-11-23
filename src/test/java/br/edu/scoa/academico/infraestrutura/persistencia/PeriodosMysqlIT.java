@@ -19,7 +19,9 @@ class PeriodosMysqlIT {
     @BeforeEach void iniciar()throws Exception{limpar();repo=new RepositorioPeriodosMysql(banco);}
     @AfterAll static void limpar()throws Exception{
         if(banco==null)return;try(var c=banco.abrir();var s=c.createStatement()){
-            s.execute("DROP TRIGGER IF EXISTS teste_periodo_auditoria");s.executeUpdate("DELETE FROM periodo_historico");s.executeUpdate("DELETE FROM periodo_letivo");
+            s.execute("DROP TRIGGER IF EXISTS teste_periodo_auditoria");
+            s.executeUpdate("DELETE FROM horario_turma");s.executeUpdate("DELETE FROM turma_auditoria");s.executeUpdate("DELETE FROM turma");
+            s.executeUpdate("DELETE FROM periodo_historico");s.executeUpdate("DELETE FROM periodo_letivo");
         }
     }
     PeriodoLetivo salvar(PeriodoLetivo p){return repo.salvar(p,UUID.randomUUID(),7,AGORA);}

@@ -13,6 +13,15 @@ public final class RepositorioAlunosMysql implements RepositorioGestaoAlunos {
     public RepositorioAlunosMysql(ConfiguracaoBanco banco) { this.banco = banco; }
     public Aluno cadastrar(long pessoaId, SituacaoCadastral situacao, long usuarioId) {
         validar(pessoaId, situacao, usuarioId);
+        for(int tentativa=0;;tentativa++){
+            try{return cadastrarUmaVez(pessoaId,situacao,usuarioId);}
+            catch(PersistenciaAcademicaException erro){
+                // MySQL 1213 desfaz a transação: repetir não duplica aluno nem auditoria.
+                if(tentativa>=2 || !(erro.getCause() instanceof SQLException sql) || sql.getErrorCode()!=1213)throw erro;
+            }
+        }
+    }
+    private Aluno cadastrarUmaVez(long pessoaId,SituacaoCadastral situacao,long usuarioId){
         try (var c = banco.abrir()) {
             c.setAutoCommit(false);
             try {

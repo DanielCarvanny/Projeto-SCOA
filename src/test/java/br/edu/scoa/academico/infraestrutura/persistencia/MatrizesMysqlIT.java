@@ -35,7 +35,7 @@ class MatrizesMysqlIT {
         try(var c=banco.abrir();var s=c.createStatement()){
             s.execute("DROP TRIGGER IF EXISTS teste_matriz_auditoria");
             s.executeUpdate("UPDATE matriz_curricular SET matriz_origem_id=NULL");
-            for(String tabela:List.of("pre_requisito_historico","pre_requisito","componente_historico","matriz_historico","componente_curricular","matriz_curricular",
+            for(String tabela:List.of("horario_turma","turma_auditoria","turma","pre_requisito_historico","pre_requisito","componente_historico","matriz_historico","componente_curricular","matriz_curricular",
                     "disciplina_historico","curso_historico","disciplina","curso"))s.executeUpdate("DELETE FROM "+tabela);
         }
     }
