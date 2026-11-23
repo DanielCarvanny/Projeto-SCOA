@@ -1,0 +1,3 @@
+package br.edu.scoa.academico.aplicacao.documentos;
+import br.edu.scoa.academico.dominio.documentos.*;import java.io.*;import java.time.*;
+public final class GestaoDocumentosAcademicos{private final RepositorioDocumentosAcademicos repo;private final ArmazenamentoDocumentos arquivos;public GestaoDocumentosAcademicos(RepositorioDocumentosAcademicos r,ArmazenamentoDocumentos a){repo=r;arquivos=a;}public DocumentoAcademico enviar(long aluno,long tipo,String nome,String mime,long tamanho,InputStream conteudo)throws IOException{String chave=arquivos.guardar(nome,mime,tamanho,conteudo);try{return repo.salvar(new DocumentoAcademico(0,aluno,tipo,nome,mime,tamanho,chave,SituacaoDocumento.PENDENTE,"",Instant.now(),0));}catch(RuntimeException e){arquivos.remover(chave);throw e;}}}
