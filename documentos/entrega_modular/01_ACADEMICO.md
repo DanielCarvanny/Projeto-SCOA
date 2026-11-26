@@ -6,7 +6,7 @@ Responsável nominal: Dan (A). Prazo final: 30/11/2026.
 
 Pessoa, aluno, professor, currículo, matrícula, inscrição e resultados acadêmicos. Consumir impedimentos financeiros e bibliotecários sem acessar diretamente as tabelas desses módulos.
 
-16 incrementos; 74 SP de referência. Pontos incluem interface, aplicação, persistência e testes locais. Não equivalem a horas nem asseguram cabimento no prazo. Todos os RF listados permanecem no escopo; P0/P1/P2 do arquivo anterior passam a indicar apenas ordem de construção.
+15 incrementos; 72 SP de referência. Pontos incluem interface, aplicação, persistência e testes locais. Não equivalem a horas nem asseguram cabimento no prazo. Todos os RF listados permanecem no escopo; P0/P1/P2 do arquivo anterior passam a indicar apenas ordem de construção.
 
 Leia primeiro AGENTS.md na raiz e documentos/entrega_modular/GOVERNANCA.md. Consulte documentos/planejamento/PLANO_TESTES_ENTREGA.md para QA/REL. As dependências identificam interfaces/dados necessários; usar implementações simuladas locais até o provedor estar disponível e depois executar obrigatoriamente os testes reais.
 
@@ -49,12 +49,15 @@ Conclusão técnica em 22/11/2026 (commit bb5445f): Entidades de Sala, Turma e H
 - Evidência: comando de teste e resultado, roteiro curto reproduzível, referência do commit e captura da interface quando aplicável.
 - Subtarefas para agentes: (1) conferir contrato/modelo; (2) implementar caso de uso e persistência; (3) integrar interface; (4) testar e revisar. O integrante integra e aceita o resultado.
 
-## [ACA-04][5 SP] Matrícula e inscrição em turma
+## [ACA-04][8 SP] Matrícula, inscrição, aulas e frequência
 
 Nota de implementação aprovada em 11/11/2026: incluir consulta por número de MatriculaCurso, apresentando aluno e curso; contemplar alunos sem matrícula e com múltiplos vínculos. Não renomear idAluno como matrícula. Esta nota não altera pontos, prazo ou status de aceite.
 
-- Referência: ACA-18,19. Ordem: P0. Dependências: ACA-03,05.
-- Resultado e aceite: Distinguir vínculo e inscrição; recusar duplicidade, pré-requisito, conflito e falta de vaga, inclusive concorrente.
+- Referência: ACA-18,19,10,21. Ordem: P0. Dependências: ACA-03,05,INT-01.
+- Resultado e aceite: Distinguir vínculo e inscrição; recusar duplicidade, pré-requisito, conflito e falta de vaga, inclusive concorrente. Só professor autorizado registra aula com conteúdo obrigatório e frequência dos alunos inscritos; impedir frequência duplicada e divisão por zero.
+- Aceite integrado ACA-07: ao concluir o fluxo ACA-04, executar na aplicação Swing o roteiro completo de avaliações com dados criados pelo próprio ACA-04: professor responsável e coordenador cadastram avaliação e lançam/corrigem notas; aluno consulta somente as próprias notas/resultados; validar persistência, permissões, navegação de retorno ao menu e funcionamento da janela durante as operações. Essa homologação pertence a este cartão para ser feita junto com o fluxo acadêmico, sem abrir nova pendência de execução no ACA-07.
+- A implementação ACA-07 precisa estar disponível apenas para essa homologação integrada; isso não bloqueia o desenvolvimento independente do ACA-04. O aceite conjunto aguarda os dois fluxos.
+- Dependências externas: registrar como bloqueios no próprio incremento contratos/provedores indisponíveis, incluindo consulta real de impedimentos quando aplicável. Simulações podem apoiar desenvolvimento, mas não contam como integração concluída nem satisfazem o aceite.
 - Entrega: caso de uso, persistência/migração, interface utilizável, validações e autorização aplicáveis; dados de demonstração.
 - Testes: caminho válido, entrada inválida, acesso indevido e reexecução quando houver escrita; acrescentar cenários específicos do aceite.
 - Evidência: comando de teste e resultado, roteiro curto reproduzível, referência do commit e captura da interface quando aplicável.
@@ -69,19 +72,11 @@ Nota de implementação aprovada em 11/11/2026: incluir consulta por número de 
 - Evidência: comando de teste e resultado, roteiro curto reproduzível, referência do commit e captura da interface quando aplicável.
 - Subtarefas para agentes: (1) conferir contrato/modelo; (2) implementar caso de uso e persistência; (3) integrar interface; (4) testar e revisar. O integrante integra e aceita o resultado.
 
-## [ACA-06][5 SP] Aulas, conteúdo e frequência
-
-- Referência: ACA-10,21. Ordem: P0. Dependências: ACA-04.
-- Resultado e aceite: Só professor autorizado registra; conteúdo exigido; sem duplicação de presença ou divisão por zero.
-- Entrega: caso de uso, persistência/migração, interface utilizável, validações e autorização aplicáveis; dados de demonstração.
-- Testes: caminho válido, entrada inválida, acesso indevido e reexecução quando houver escrita; acrescentar cenários específicos do aceite.
-- Evidência: comando de teste e resultado, roteiro curto reproduzível, referência do commit e captura da interface quando aplicável.
-- Subtarefas para agentes: (1) conferir contrato/modelo; (2) implementar caso de uso e persistência; (3) integrar interface; (4) testar e revisar. O integrante integra e aceita o resultado.
 
 ## [ACA-07][5 SP] Avaliações, notas e resultados
 
-- Referência: ACA-11,12. Ordem: P0. Dependências: ACA-06.
-- Resultado e aceite: Escala, antecedência e fórmula aprovadas aplicadas; nota ausente permanece pendente.
+- Referência: ACA-11,12. Ordem: P0. Dependências: ACA-04.
+- Resultado e aceite: Notas de 0,0 a 10,0 com uma casa decimal; antecedência mínima de sete dias corridos; médias HALF_UP. Após exame, MF = (MP + EF) / 2 e aprovação se MF >= 5,0; nota ausente permanece pendente.
 - Entrega: caso de uso, persistência/migração, interface utilizável, validações e autorização aplicáveis; dados de demonstração.
 - Testes: caminho válido, entrada inválida, acesso indevido e reexecução quando houver escrita; acrescentar cenários específicos do aceite.
 - Evidência: comando de teste e resultado, roteiro curto reproduzível, referência do commit e captura da interface quando aplicável.
@@ -90,7 +85,7 @@ Nota de implementação aprovada em 11/11/2026: incluir consulta por número de 
 ## [ACA-08][5 SP] Auditoria do diário e pauta final
 
 - Referência: ACA-16,24. Ordem: P1. Dependências: ACA-07.
-- Resultado e aceite: Coordenador registra análise/homologação; pendências impedem fechamento.
+- Resultado e aceite: Coordenador pode auditar todas as turmas, registrar análise/homologação e fechar a pauta somente quando não houver nota de prova ausente, exame pendente para aluno elegível ou pendência obrigatória de conteúdo/frequência informada pelo ACA-04. Aluno inelegível ao exame é reprovado pela média das provas. Após homologação, alterações de avaliações/notas ficam bloqueadas até reabertura auditada pelo coordenador.
 - Entrega: caso de uso, persistência/migração, interface utilizável, validações e autorização aplicáveis; dados de demonstração.
 - Testes: caminho válido, entrada inválida, acesso indevido e reexecução quando houver escrita; acrescentar cenários específicos do aceite.
 - Evidência: comando de teste e resultado, roteiro curto reproduzível, referência do commit e captura da interface quando aplicável.

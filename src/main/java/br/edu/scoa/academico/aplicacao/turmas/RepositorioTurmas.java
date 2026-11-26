@@ -13,4 +13,6 @@ public interface RepositorioTurmas {
     Turma alocarSala(long turmaId, long horarioId, long revisaoTurma, long revisaoHorario, Long salaId, UUID operacao, long autor, Instant instante);
     Optional<Turma> consultarTurma(long id);
     List<Turma> pesquisarTurmas(long periodoId);
+    List<Turma> todas();
+    List<Turma> porProfessor(long professorId);
 }

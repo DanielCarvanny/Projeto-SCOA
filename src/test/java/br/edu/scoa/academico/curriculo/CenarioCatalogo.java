@@ -47,5 +47,8 @@ public final class CenarioCatalogo implements RepositorioCatalogo {
     public synchronized List<RevisaoCatalogo> historico(TipoCatalogo tipo, long id) {
         return revisoes.stream().filter(r -> r.item().tipo() == tipo && r.item().id() == id).toList();
     }
+    @Override public Optional<ItemCatalogo> consultar(TipoCatalogo tipo, long id) {
+        return itens.stream().filter(item -> item.tipo() == tipo && item.id() == id).findFirst();
+    }
 }
 

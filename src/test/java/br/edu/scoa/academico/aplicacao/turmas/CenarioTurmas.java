@@ -197,4 +197,10 @@ public final class CenarioTurmas implements RepositorioTurmas {
         gravacoes++;
         return salva;
     }
+    @Override public synchronized List<Turma> porProfessor(long professorId) {
+        return turmas.values().stream().filter(turma -> turma.professorId() == professorId).toList();
+    }
+    @Override public synchronized List<Turma> todas() {
+        return List.copyOf(turmas.values());
+    }
 }

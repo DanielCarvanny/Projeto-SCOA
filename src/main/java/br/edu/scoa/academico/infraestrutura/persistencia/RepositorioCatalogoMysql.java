@@ -77,6 +77,16 @@ public final class RepositorioCatalogoMysql implements RepositorioCatalogo {
             return List.copyOf(itens);
         } catch (SQLException erro) { throw new FalhaCurriculo(INDISPONIVEL); }
     }
+    public Optional<ItemCatalogo> consultar(TipoCatalogo tipo, long id) {
+        if (tipo == null || id <= 0) throw new FalhaCurriculo(NAO_ENCONTRADO);
+        try (var conexao = banco.abrir(); var comando = conexao.prepareStatement(
+                "SELECT id," + campos(tipo) + " FROM " + tabela(tipo) + " WHERE id=?")) {
+            comando.setLong(1, id);
+            try (var resultado = comando.executeQuery()) {
+                return resultado.next() ? Optional.of(ler(resultado, tipo)) : Optional.empty();
+            }
+        } catch (SQLException erro) { throw new FalhaCurriculo(INDISPONIVEL); }
+    }
     public List<RevisaoCatalogo> historico(TipoCatalogo tipo, long id) {
         try (var conexao = banco.abrir(); var comando = conexao.prepareStatement(
                 "SELECT item_id AS id," + campos(tipo) + ",autor_id,instante,operacao_id FROM " + tabela(tipo) + "_historico WHERE item_id=? ORDER BY versao_registro")) {
