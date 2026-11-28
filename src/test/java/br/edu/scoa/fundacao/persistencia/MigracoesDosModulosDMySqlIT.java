@@ -8,6 +8,8 @@ import br.edu.scoa.almoxarifado.infraestrutura.persistencia.MigracoesAlmoxarifad
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -48,8 +50,12 @@ class MigracoesDosModulosDMySqlIT {
         MigracoesAlmoxarifado.configurar(banco).migrate();
         MigracoesAdministrativo.configurar(banco).migrate();
 
-        assertEquals(2, MigracoesAlmoxarifado.configurar(banco).info().applied().length);
-        assertEquals(2, MigracoesAdministrativo.configurar(banco).info().applied().length);
+        var infoAlmoxarifado = MigracoesAlmoxarifado.configurar(banco).info();
+        var infoAdministrativo = MigracoesAdministrativo.configurar(banco).info();
+        assertTrue(infoAlmoxarifado.applied().length >= 1);
+        assertEquals(0, infoAlmoxarifado.pending().length);
+        assertTrue(infoAdministrativo.applied().length >= 1);
+        assertEquals(0, infoAdministrativo.pending().length);
         assertEquals(0, MigracoesAlmoxarifado.configurar(banco).migrate().migrationsExecuted);
         assertEquals(0, MigracoesAdministrativo.configurar(banco).migrate().migrationsExecuted);
         try (var conexao = banco.abrir(); var comando = conexao.createStatement();

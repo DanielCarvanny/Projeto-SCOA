@@ -25,6 +25,7 @@ class RepositorioAlmoxarifadoMysqlIT {
     @BeforeEach void limpar() throws Exception {
         try (var conexao = banco.abrir(); var comando = conexao.createStatement()) {
             assertEquals("scoa_test", conexao.getCatalog());
+            comando.executeUpdate("DELETE FROM movimentacao_estoque");
             comando.executeUpdate("DELETE FROM produto");
             comando.executeUpdate("DELETE FROM localizacao");
         }
