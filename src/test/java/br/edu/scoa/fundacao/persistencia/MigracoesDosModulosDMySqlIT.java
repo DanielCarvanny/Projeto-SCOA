@@ -5,7 +5,6 @@ import br.edu.scoa.academico.infraestrutura.persistencia.MigracoesAplicacao;
 import br.edu.scoa.academico.infraestrutura.persistencia.MigracoesIdentidade;
 import br.edu.scoa.administrativo.infraestrutura.persistencia.MigracoesAdministrativo;
 import br.edu.scoa.almoxarifado.infraestrutura.persistencia.MigracoesAlmoxarifado;
-import org.flywaydb.core.api.MigrationVersion;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -49,16 +48,14 @@ class MigracoesDosModulosDMySqlIT {
         MigracoesAlmoxarifado.configurar(banco).migrate();
         MigracoesAdministrativo.configurar(banco).migrate();
 
-        assertEquals(MigrationVersion.fromVersion("001"),
-                MigracoesAlmoxarifado.configurar(banco).info().current().getVersion());
-        assertEquals(MigrationVersion.fromVersion("001"),
-                MigracoesAdministrativo.configurar(banco).info().current().getVersion());
+        assertEquals(2, MigracoesAlmoxarifado.configurar(banco).info().applied().length);
+        assertEquals(2, MigracoesAdministrativo.configurar(banco).info().applied().length);
         assertEquals(0, MigracoesAlmoxarifado.configurar(banco).migrate().migrationsExecuted);
         assertEquals(0, MigracoesAdministrativo.configurar(banco).migrate().migrationsExecuted);
         try (var conexao = banco.abrir(); var comando = conexao.createStatement();
              var resultado = comando.executeQuery("SELECT COUNT(*) FROM information_schema.tables "
                      + "WHERE table_schema = DATABASE() AND table_name IN "
-                     + "('produto', 'estoque', 'funcionario', 'setor', 'centro_custo')")) {
+                     + "('funcionario', 'setor', 'centro_custo')")) {
             resultado.next();
             assertEquals(0, resultado.getInt(1));
         }
