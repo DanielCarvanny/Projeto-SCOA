@@ -59,4 +59,6 @@ docker compose up -d --wait mysql
 .\executar-academico.ps1 -Acao Abrir
 ```
 
+`Migrar` aplica, na mesma conexão configurada, as migrações versionadas e independentes de Identidade, Acadêmico, Almoxarifado e Administrativo. Cada módulo mantém seu próprio histórico Flyway; o BAS-01 não cria tabelas de domínio dos módulos D.
+
 Inicializar é executado uma única vez, em terminal interativo, para definir suas credenciais. Não existe senha inicial fixa. DemonstracaoAlunos continua sendo a demonstração separada em memória. Os testes manuais foram reportados como funcionando por Dan; a revisão do pacote está em [REVISÃO DO PACOTE ACA-01](documentos/academico/REVISAO_PACOTE_ACA01.md). Não houve publicação.

@@ -1,4 +1,5 @@
 package br.edu.scoa.academico.infraestrutura.persistencia;
+import br.edu.scoa.fundacao.persistencia.ConfiguracaoBanco;
 
 import br.edu.scoa.academico.aplicacao.alunos.CadastroAlunoException;
 import br.edu.scoa.academico.dominio.alunos.SituacaoCadastral;

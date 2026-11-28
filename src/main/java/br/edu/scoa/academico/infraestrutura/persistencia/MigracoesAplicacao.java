@@ -1,4 +1,5 @@
 package br.edu.scoa.academico.infraestrutura.persistencia;
+import br.edu.scoa.fundacao.persistencia.ConfiguracaoBanco;
 import org.flywaydb.core.Flyway;
 public final class MigracoesAplicacao {
     private MigracoesAplicacao(){}

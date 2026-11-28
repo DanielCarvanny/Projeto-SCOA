@@ -1,4 +1,5 @@
 package br.edu.scoa.academico.infraestrutura.persistencia;
+import br.edu.scoa.fundacao.persistencia.ConfiguracaoBanco;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 /** Reconstrução restrita ao banco descartável, nunca executada na aplicação. */

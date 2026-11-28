@@ -1,4 +1,5 @@
 package br.edu.scoa.academico.infraestrutura.identidade;
+import br.edu.scoa.fundacao.persistencia.ConfiguracaoBanco;
 import br.edu.scoa.academico.aplicacao.identidade.*;
 import br.edu.scoa.academico.aplicacao.alunos.*;
 import br.edu.scoa.academico.dominio.identidade.*;

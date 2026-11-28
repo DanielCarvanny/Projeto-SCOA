@@ -1,4 +1,5 @@
 package br.edu.scoa.academico.apresentacao.identidade;
+import br.edu.scoa.fundacao.persistencia.ConfiguracaoBanco;
 import br.edu.scoa.academico.aplicacao.identidade.*;
 import br.edu.scoa.academico.aplicacao.alunos.*;
 import br.edu.scoa.academico.aplicacao.professores.*;
@@ -6,6 +7,8 @@ import br.edu.scoa.academico.apresentacao.alunos.*;
 import br.edu.scoa.academico.apresentacao.professores.*;
 import br.edu.scoa.academico.infraestrutura.identidade.*;
 import br.edu.scoa.academico.infraestrutura.persistencia.*;
+import br.edu.scoa.administrativo.infraestrutura.persistencia.MigracoesAdministrativo;
+import br.edu.scoa.almoxarifado.infraestrutura.persistencia.MigracoesAlmoxarifado;
 import java.time.Clock;
 import java.util.Arrays;
 import javax.swing.*;
@@ -20,7 +23,10 @@ public final class AplicacaoAcademica {
                 var f=MigracoesAcademico.configurar(banco);
                 // Identidade foi instalada primeiro: baseline explícita só para o histórico acadêmico novo.
                 if(f.info().applied().length==0)MigracoesAplicacao.inicializarHistoricoAcademico(banco);
-                f.migrate();System.out.println("Migrações concluídas.");return;
+                f.migrate();
+                MigracoesAlmoxarifado.configurar(banco).migrate();
+                MigracoesAdministrativo.configurar(banco).migrate();
+                System.out.println("Migrações concluídas.");return;
             }
             var senhas=new SenhasPbkdf2();var repo=new RepositorioIdentidadeMysql(banco,senhas);
             if(argumentos.length==1&&argumentos[0].equals("--inicializar")){

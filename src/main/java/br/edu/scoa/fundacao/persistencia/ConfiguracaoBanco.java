@@ -1,4 +1,4 @@
-package br.edu.scoa.academico.infraestrutura.persistencia;
+package br.edu.scoa.fundacao.persistencia;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -39,7 +39,21 @@ public final class ConfiguracaoBanco {
         return DriverManager.getConnection(url, propriedades);
     }
 
-    String url() { return url; }
-    String usuario() { return usuario; }
-    String senha() { return senha; }
+    public String url() { return url; }
+    public String usuario() { return usuario; }
+    public String senha() { return senha; }
+
+    /** Constrói a configuração Flyway sem expor credenciais fora da fundação. */
+    public org.flywaydb.core.Flyway configurarFlyway(String localizacao, String tabelaHistorico) {
+        return org.flywaydb.core.Flyway.configure()
+                .dataSource(url, usuario, senha)
+                .jdbcProperties(Map.of("sslMode", "REQUIRED", "connectionTimeZone", "UTC",
+                        "connectTimeout", "5000", "socketTimeout", "10000"))
+                .locations(localizacao)
+                .table(tabelaHistorico)
+                .baselineVersion("0")
+                .baselineOnMigrate(true)
+                .cleanDisabled(true)
+                .load();
+    }
 }
